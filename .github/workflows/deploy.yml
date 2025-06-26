@@ -1,0 +1,74 @@
+name: Deploy Registry
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and Deploy Registry
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Validate servers
+        run: npm run validate
+
+      - name: Build registry
+        run: npm run build
+
+      - name: Copy public files to dist
+        run: cp -r public/* dist/
+
+      - name: Display deployment info
+        run: |
+          echo "🚀 Deploying registry with the following stats:"
+          echo "📊 Total servers: $(jq '.totalServers' dist/registry.json)"
+          echo "📂 Categories: $(jq -r '[.servers[].category] | unique | join(", ")' dist/registry.json)"
+          echo "⭐ Total stars: $(jq '[.servers[].stars // 0] | add' dist/registry.json)"
+          echo "🕐 Generated at: $(date -d @$(jq '.generatedAt' dist/registry.json) '+%Y-%m-%d %H:%M:%S UTC')"
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Display success message
+        run: |
+          echo "✅ Registry deployed successfully!"
+          echo "🌐 Live at: ${{ steps.deployment.outputs.page_url }}"
+          echo "📡 Registry endpoint: ${{ steps.deployment.outputs.page_url }}registry.json"
+

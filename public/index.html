@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Registry</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .endpoint { background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .stats { display: flex; gap: 20px; justify-content: center; margin: 20px 0; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2em; font-weight: bold; color: #007acc; }
+        .stat-label { color: #666; }
+        .last-updated { text-align: center; color: #666; margin: 20px 0; }
+        pre { background: #f8f8f8; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .link { color: #007acc; text-decoration: none; }
+        .link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 MCP Registry</h1>
+        <p>Community-maintained registry of Model Context Protocol servers</p>
+    </div>
+
+    <div class="endpoint">
+        <h2>Registry Endpoint</h2>
+        <pre><code>https://ravitemer.github.io/mcp-registry/registry.json</code></pre>
+        <p><a href="registry.json" target="_blank" class="link">View Raw JSON</a></p>
+    </div>
+
+    <div class="stats" id="stats">
+        <div class="stat">
+            <div class="stat-number" id="server-count">Loading...</div>
+            <div class="stat-label">Servers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="category-count">Loading...</div>
+            <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="stars-count">Loading...</div>
+            <div class="stat-label">Total Stars</div>
+        </div>
+    </div>
+
+    <div class="last-updated" id="last-updated">Loading...</div>
+
+    <h2>Usage</h2>
+    <p>Add this registry to your MCP client or hub:</p>
+    <pre><code>curl -s https://ravitemer.github.io/mcp-registry/registry.json</code></pre>
+
+    <h2>Contributing</h2>
+    <p>Want to add your MCP server? Check out our <a href="https://github.com/ravitemer/mcp-registry" target="_blank" class="link">GitHub repository</a> for contribution guidelines.</p>
+
+    <script>
+        fetch('registry.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('server-count').textContent = data.totalServers;
+                const categories = [...new Set(data.servers.map(s => s.category))];
+                document.getElementById('category-count').textContent = categories.length;
+                const totalStars = data.servers.reduce((sum, s) => sum + (s.stars || 0), 0);
+                document.getElementById('stars-count').textContent = totalStars;
+                const lastUpdated = new Date(data.generatedAt * 1000).toLocaleString();
+                document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated}`;
+            })
+            .catch(error => {
+                document.getElementById('server-count').textContent = 'Error';
+                document.getElementById('category-count').textContent = 'Error';
+                document.getElementById('stars-count').textContent = 'Error';
+                document.getElementById('last-updated').textContent = 'Error loading data';
+            });
+    </script>
+</body>
+</html>
