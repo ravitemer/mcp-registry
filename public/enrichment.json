@@ -1,16 +1,16 @@
 {
   "version": "1.0.0",
-  "lastUpdated": 1750944048,
+  "lastUpdated": 1751005757,
   "servers": {
     "filesystem": {
-      "stars": 56123,
+      "stars": 56258,
       "lastCommit": 1750917595,
-      "updatedAt": 1750944048
+      "updatedAt": 1751005757
     },
     "github": {
-      "stars": 16433,
-      "lastCommit": 1750938794,
-      "updatedAt": 1750944048
+      "stars": 16462,
+      "lastCommit": 1750955772,
+      "updatedAt": 1751005757
     }
   }
 }
