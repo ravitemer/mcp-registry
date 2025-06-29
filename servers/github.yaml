@@ -62,5 +62,5 @@ installations:
         required: false
     transports:
       - stdio
-featured: false
-verified: false
+featured: true
+verified: true

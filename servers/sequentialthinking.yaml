@@ -1,0 +1,38 @@
+id: sequentialthinking
+name: Sequential Thinking
+description: >-
+  A structured problem-solving tool that enables step-by-step analysis, thought
+  revision, and branching logic for complex reasoning tasks.
+author: modelcontextprotocol
+url: >-
+  https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking
+category: development
+tags:
+  - problem-solving
+  - reasoning
+  - analysis
+  - structured-thinking
+  - decision-making
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "mcp/sequentialthinking"]
+      }
+    prerequisites:
+      - Docker
+    transports:
+      - stdio
+featured: false
+verified: true
