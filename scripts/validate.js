@@ -29,6 +29,15 @@ async function validate() {
         // Validate against schema
         const validatedServer = ServerSchema.parse(data);
 
+        // Extra: Validate config JSON for each installation
+        for (const inst of validatedServer.installations) {
+          try {
+            JSON.parse(inst.config);
+          } catch (e) {
+            throw new Error(`Invalid JSON in config for installation '${inst.name}' in server '${validatedServer.id}': ${e.message}`);
+          }
+        }
+
         // Additional validation checks
         if (!isValidServerId(validatedServer.id)) {
           throw new Error(`Invalid server ID: ${validatedServer.id}. Must be alphanumeric with underscores only, min 3 chars.`);

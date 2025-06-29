@@ -1,0 +1,66 @@
+id: github
+name: GitHub
+description: >-
+  GitHub's official MCP Server that provides seamless integration with GitHub
+  APIs, enabling advanced automation and interaction capabilities for developers
+  and tools.
+author: github
+url: https://github.com/github/github-mcp-server
+category: development
+tags:
+  - github
+  - git
+  - repository-management
+  - issue-tracking
+  - pull-requests
+  - code-scanning
+  - collaboration
+  - api-integration
+installations:
+  - name: Remote
+    config: |-
+      {
+        "url": "https://api.githubcopilot.com/mcp/",
+        "headers": {
+          "Authorization": "Bearer ${GITHUB_PERSONAL_ACCESS_TOKEN}"
+        }
+      }
+    prerequisites:
+      - GitHub account
+    parameters:
+      - name: GitHub Personal Access Token
+        key: GITHUB_PERSONAL_ACCESS_TOKEN
+        placeholder: ghp_your_github_personal_access_token
+        required: true
+    transports:
+      - streamable-http
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "-e", "GITHUB_TOOLSETS", "-e", "GITHUB_READ_ONLY", "ghcr.io/github/github-mcp-server"],
+        "env": {
+          "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}",
+          "GITHUB_TOOLSETS": "${GITHUB_TOOLSETS}",
+          "GITHUB_READ_ONLY": "${GITHUB_READ_ONLY}"
+        }
+      }
+    prerequisites:
+      - GitHub account
+      - Docker
+    parameters:
+      - name: GitHub Personal Access Token
+        key: GITHUB_PERSONAL_ACCESS_TOKEN
+        placeholder: ghp_your_github_personal_access_token
+      - name: GitHub Toolsets
+        key: GITHUB_TOOLSETS
+        placeholder: repos,issues,pull_requests,code_security
+        required: false
+      - name: GitHub Read Only (1 for true, 0 for false)
+        key: GITHUB_READ_ONLY
+        placeholder: '0'
+        required: false
+    transports:
+      - stdio
+featured: false
+verified: false

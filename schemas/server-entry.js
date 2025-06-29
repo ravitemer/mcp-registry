@@ -19,7 +19,17 @@ export const ParameterSchema = z.object({
 export const InstallationSchema = z.object({
   name: z.string().min(1).describe("Name of the installation method (e.g., 'Docker', 'NPX', 'Python')"),
   description: z.string().optional().describe("Brief description of this installation method"),
-  config: z.string().min(1).describe("JSON string containing the mcp-hub server configuration"),
+  config: z.string().min(1).refine(
+    (val) => {
+      try {
+        JSON.parse(val);
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    { message: "config must be a valid JSON string" }
+  ),
   prerequisites: z.array(z.string()).optional().describe("List of system requirements"),
   parameters: z.array(ParameterSchema).optional().describe("Parameters for this installation method"),
   transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).optional().describe("Supported transport methods for this installation"),
