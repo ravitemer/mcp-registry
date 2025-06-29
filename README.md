@@ -212,6 +212,28 @@ After submitting:
 4. Once approved, your server will be merged and automatically deployed
 5. Your server will be available at: `https://ravitemer.github.io/mcp-registry/registry.json`
 
+#### Automated Validation on Pull Requests
+
+Every pull request to this repository triggers a comprehensive validation workflow.  
+**Your submission will only be accepted if it passes all of the following checks:**
+
+- **Schema Validation:**  
+  Every server YAML file must match the [strict Zod schema](#validation-schema-zod).  
+  - No extra fields are allowed.
+  - All required fields must be present.
+
+- **Unique IDs and Names:**  
+  All servers must have a unique `id` and `name`.  
+  Duplicate IDs or names across files will cause validation to fail.
+
+- **Valid JSON in Config:**  
+  Each installation’s `config` field must be a valid JSON string.
+
+- **Parameter Placeholder Consistency:**  
+  Every `${VARIABLE}` placeholder in an installation’s `config` must have a corresponding parameter declared in that installation’s `parameters` array.
+
+If any of these checks fail, your PR will be marked as failing and you will see detailed error messages in the PR logs.
+
 
 ## Best Practices
 
@@ -221,7 +243,6 @@ After submitting:
 - **Accurate Prerequisites**: List all system requirements clearly
 - **Parameter Documentation**: Include helpful descriptions and example values
 - **Testing**: Thoroughly test your server definition before submitting
-- **Semantic Versioning**: Use semantic versioning if specifying a version
-- **Quality URLs**: Ensure documentation and repository URLs are accurate
+- **Quality URLs**: Ensure repository URLs are accurate
 
 Ready to contribute? Start by forking the repository and adding your MCP server! 🚀
