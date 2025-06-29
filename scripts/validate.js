@@ -19,7 +19,7 @@ async function validate() {
         continue;
       }
 
-      console.log(`📝 Validating ${file}...`);
+      // console.log(`📝 Validating ${file}...`);
       const filePath = path.join(SERVERS_DIR, file);
       const content = await fs.readFile(filePath, 'utf-8');
 
@@ -44,7 +44,7 @@ async function validate() {
         }
 
         validCount++;
-        console.log(`✅ ${validatedServer.name} is valid`);
+        // console.log(`✅ ${validatedServer.name} is valid`);
 
       } catch (error) {
         errorCount++;
@@ -58,18 +58,13 @@ async function validate() {
         }
       }
     }
-
-    console.log(`\n📊 Validation Summary:`);
-    console.log(`✅ Valid servers: ${validCount}`);
-    console.log(`❌ Invalid servers: ${errorCount}`);
-
     if (errorCount > 0) {
+      console.log(`❌ Invalid servers: ${errorCount}`);
       console.log('\n💡 Please fix the validation errors before building the registry.');
       process.exit(1);
     } else {
       console.log('\n🎉 All servers are valid!');
     }
-
   } catch (error) {
     console.error('💥 Validation failed:', error.message);
     process.exit(1);
