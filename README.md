@@ -32,7 +32,6 @@ Whether you're building an MCP client, managing a server hub, or just want to di
 - Each server can have multiple installation methods (NPX, Docker, Python, etc.)
 - Installation configurations are ready-to-use JSON templates
 - Parameters use `${VARIABLE}` syntax for easy replacement
-- Transport capabilities are clearly specified for each server
 
 ### Directory Structure
 
@@ -42,13 +41,8 @@ mcp-registry/
 │   ├── filesystem.yaml
 │   ├── github.yaml
 │   └── ...
-├── schemas/                     # Validation schemas
-│   └── server-entry.js
-├── scripts/                     # Build and validation tools
-│   ├── build.js
-│   ├── validate.js
-│   └── utils.js
-└── test/                        # Test suite
+└── schemas/                     # Validation schemas
+  └── server-entry.js
 ```
 
 ### Server Definition Format
@@ -70,12 +64,6 @@ tags:                            # Searchable keywords
   - tag1
   - tag2
 
-# Transport Capabilities
-transports:                      # Supported transport methods
-  - stdio
-  - sse
-  - streamable-http
-
 # Installation Methods
 installations:
   - name: NPX                    # Installation method name
@@ -87,18 +75,57 @@ installations:
       }
     prerequisites:               # System requirements
       - Node.js
-  
-# Parameters (used across all installation methods)
-parameters:
-  - name: Parameter Name         # Human-readable name
-    key: PARAM                  # Variable key for ${PARAM}
-    description: Parameter description
-    placeholder: example-value   # Example value
-    required: true              # Whether parameter is required
+    parameters:                  # Parameters for this installation
+      - name: Parameter Name
+        key: PARAM
+        description: Parameter description
+        placeholder: example-value
+        required: true
+    transports:                  # Supported transport methods for this installation
+      - stdio
+      - sse
+      - streamable-http
 
 # Quality Indicators
 featured: false                 # Featured/recommended server
 verified: false                 # Verified by maintainers
+```
+
+### Validation Schema (Zod)
+
+```js
+import { z } from 'zod';
+
+export const ParameterSchema = z.object({
+  name: z.string().min(1),
+  key: z.string().min(1),
+  description: z.string().optional(),
+  placeholder: z.string().optional(),
+  required: z.boolean().default(true),
+}).strict();
+
+export const InstallationSchema = z.object({
+  name: z.string().min(1),
+  description: z.string().optional(),
+  config: z.string().min(1),
+  prerequisites: z.array(z.string()).optional(),
+  parameters: z.array(ParameterSchema).optional(),
+  transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).optional(),
+}).strict();
+
+export const ServerSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  description: z.string().min(1).max(200),
+  author: z.string(),
+  url: z.string().url(),
+  license: z.string().optional(),
+  category: z.string(),
+  tags: z.array(z.string()),
+  installations: z.array(InstallationSchema).min(1),
+  featured: z.boolean().default(false),
+  verified: z.boolean().default(false),
+}).strict();
 ```
 
 ### Installation Methods
@@ -115,7 +142,7 @@ Each server can provide multiple installation methods to accommodate different e
 
 The registry uses a `${VARIABLE}` placeholder system for configuration templates:
 
-- Parameters can be global (used across all installation methods) or method-specific
+- Parameters should be declared for each installation method if present
 - Each parameter includes name, description, placeholder, and required flag
 - Consumers replace placeholders with actual values during installation
 
@@ -143,88 +170,6 @@ npm install
 2. Use a descriptive filename (e.g., `my-awesome-server.yaml`)
 3. Follow the server definition format described above
 4. Include all required fields and at least one installation method
-
-
-#### Example Server Definitions
-
-##### Server with Multiple Installations
-
-```yaml
-id: filesystem
-name: File System
-description: Provides comprehensive filesystem operations
-author: modelcontextprotocol
-url: https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem
-license: MIT
-category: development
-tags:
-  - filesystem
-  - file-management
-transports:
-  - stdio
-installations:
-  - name: NPX
-    description: Run using NPX
-    config: |
-      {
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-filesystem", "${ALLOWED_DIRECTORY}"]
-      }
-    prerequisites:
-      - Node.js
-  - name: Docker
-    description: Run using Docker
-    config: |
-      {
-        "command": "docker",
-        "args": ["run", "-i", "--rm", "--mount", "type=bind,src=${ALLOWED_DIRECTORY},dst=/projects", "mcp/filesystem", "/projects"]
-      }
-    prerequisites:
-      - Docker
-parameters:
-  - name: Allowed Directory
-    key: ALLOWED_DIRECTORY
-    description: The directory path that the filesystem server can access
-    placeholder: /Users/username/Documents
-featured: true
-verified: true
-```
-
-##### Remote Server with Authentication
-
-```yaml
-id: remote_api_server
-name: Remote API Server
-description: Connects to a remote API service
-author: API Company
-url: https://api-company.com/mcp-server
-category: api
-tags:
-  - api
-  - remote
-transports:
-  - sse
-  - streamable-http
-installations:
-  - name: Remote Connection
-    description: Direct connection to hosted service
-    config: |
-      {
-        "url": "https://api.service.com/mcp",
-        "headers": {
-          "Authorization": "Bearer ${API_TOKEN}"
-        }
-      }
-parameters:
-  - name: API Token
-    key: API_TOKEN
-    description: Your API authentication token
-    placeholder: your_api_token_here
-    required: true
-featured: false
-verified: true
-```
-
 
 ### 4. Test Your Server
 

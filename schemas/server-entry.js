@@ -10,7 +10,7 @@ export const ParameterSchema = z.object({
   description: z.string().optional().describe("Detailed description of the parameter"),
   placeholder: z.string().optional().describe("Example value shown to the user"),
   required: z.boolean().default(true).describe("Whether this parameter is required"),
-});
+}).strict()
 
 /**
  * Schema for different installation methods
@@ -21,8 +21,9 @@ export const InstallationSchema = z.object({
   description: z.string().optional().describe("Brief description of this installation method"),
   config: z.string().min(1).describe("JSON string containing the mcp-hub server configuration"),
   prerequisites: z.array(z.string()).optional().describe("List of system requirements"),
-  parameters: z.array(ParameterSchema).optional().describe("Method-specific parameters"),
-});
+  parameters: z.array(ParameterSchema).optional().describe("Parameters for this installation method"),
+  transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).optional().describe("Supported transport methods for this installation"),
+}).strict()
 
 /**
  * Main schema for MCP server registry entries
@@ -42,25 +43,10 @@ export const ServerSchema = z.object({
   category: z.string().describe("Primary category (e.g., 'productivity', 'development', 'data')"),
   tags: z.array(z.string()).describe("Searchable keywords and tags"),
 
-  // Transport capabilities
-  transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).describe("Supported transport methods"),
-
   // Installation options
   installations: z.array(InstallationSchema).min(1).describe("Available installation methods"),
-
-  // Common parameters used across all installation methods
-  parameters: z.array(ParameterSchema).optional().describe("Global parameters for all methods"),
 
   // Quality indicators
   featured: z.boolean().default(false).describe("Whether this server is featured/recommended"),
   verified: z.boolean().default(false).describe("Whether verified by official companies/maintainers"),
-
-  // Metadata
-  version: z.string().optional().describe("Latest version number"),
-});
-
-
-
-
-
-
+}).strict()
