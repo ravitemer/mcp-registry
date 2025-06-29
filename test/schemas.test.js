@@ -67,7 +67,7 @@ describe('Schemas', () => {
         tags: ['test', 'example'],
         installations: [{
           name: 'NPX',
-          config: '{"command": "npx"}',
+          config: '{"command": "npx", "args": ["${TEST_PARAM}"]}', // references TEST_PARAM
           parameters: [{
             name: 'Test Param',
             key: 'TEST_PARAM'

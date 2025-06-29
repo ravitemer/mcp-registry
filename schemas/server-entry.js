@@ -17,23 +17,29 @@ export const ParameterSchema = z.object({
  * Each method provides a different way to install and run the MCP server
  */
 export const InstallationSchema = z.object({
-  name: z.string().min(1).describe("Name of the installation method (e.g., 'Docker', 'NPX', 'Python')"),
-  description: z.string().optional().describe("Brief description of this installation method"),
-  config: z.string().min(1).refine(
-    (val) => {
+  name: z.string().min(1),
+  description: z.string().optional(),
+  config: z.string().min(1)
+    .refine((val) => {
       try {
         JSON.parse(val);
         return true;
       } catch {
         return false;
       }
-    },
-    { message: "config must be a valid JSON string" }
-  ),
-  prerequisites: z.array(z.string()).optional().describe("List of system requirements"),
-  parameters: z.array(ParameterSchema).optional().describe("Parameters for this installation method"),
-  transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).optional().describe("Supported transport methods for this installation"),
-}).strict()
+    }, { message: "config must be valid JSON" }),
+  prerequisites: z.array(z.string()).optional(),
+  parameters: z.array(ParameterSchema).optional(),
+  transports: z.array(z.enum(['stdio', 'sse', 'streamable-http'])).optional(),
+}).strict().refine((inst) => {
+  // Extract all ${VAR} from config
+  const matches = Array.from(inst.config.matchAll(/\$\{([A-Z0-9_]+)\}/g));
+  const paramKeys = (inst.parameters || []).map(p => p.key);
+  return matches.every(m => paramKeys.includes(m[1])) && new Set(matches.map(m => m[1])).size === paramKeys.length;
+}, {
+  message: "All ${VAR} in config must have a corresponding parameter in parameters",
+  path: ["config"]
+})
 
 /**
  * Main schema for MCP server registry entries
