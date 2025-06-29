@@ -65,18 +65,17 @@ describe('Schemas', () => {
         license: 'MIT',
         category: 'development',
         tags: ['test', 'example'],
-        transports: ['stdio'],
         installations: [{
           name: 'NPX',
-          config: '{"command": "npx"}'
-        }],
-        parameters: [{
-          name: 'Test Param',
-          key: 'TEST_PARAM'
+          config: '{"command": "npx"}',
+          parameters: [{
+            name: 'Test Param',
+            key: 'TEST_PARAM'
+          }],
+          transports: ['stdio']
         }],
         featured: false,
         verified: true,
-        version: '1.0.0'
       };
 
       expect(() => ServerSchema.parse(validServer)).not.toThrow();
@@ -91,10 +90,10 @@ describe('Schemas', () => {
         url: 'https://example.com',
         category: 'test',
         tags: ['test'],
-        transports: ['stdio'],
         installations: [{
           name: 'Test',
-          config: '{}'
+          config: '{}',
+          transports: ['stdio']
         }]
       };
 
@@ -113,10 +112,10 @@ describe('Schemas', () => {
         url: 'https://example.com',
         category: 'test',
         tags: ['test'],
-        transports: ['stdio'],
         installations: [{
           name: 'Test',
-          config: '{}'
+          config: '{}',
+          transports: ['stdio']
         }]
       };
 
@@ -132,7 +131,6 @@ describe('Schemas', () => {
         url: 'https://example.com',
         category: 'test',
         tags: ['test'],
-        transports: ['stdio'],
         installations: []
       };
 
@@ -148,10 +146,10 @@ describe('Schemas', () => {
         url: 'https://example.com',
         category: 'test',
         tags: ['test'],
-        transports: ['invalid-transport'],
         installations: [{
           name: 'Test',
-          config: '{}'
+          config: '{}',
+          transports: ['invalid-transport']
         }]
       };
 
@@ -167,10 +165,10 @@ describe('Schemas', () => {
         url: 'https://example.com',
         category: 'test',
         tags: ['test'],
-        transports: ['stdio', 'sse', 'streamable-http'],
         installations: [{
           name: 'Test',
-          config: '{}'
+          config: '{}',
+          transports: ['stdio', 'sse', 'streamable-http']
         }]
       };
 
