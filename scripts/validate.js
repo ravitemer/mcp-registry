@@ -13,6 +13,9 @@ async function validate() {
     const serverFiles = await fs.readdir(SERVERS_DIR);
     let validCount = 0;
     let errorCount = 0;
+    const ids = {};
+    const names = {};
+    let duplicateFound = false;
 
     for (const file of serverFiles) {
       if (!file.endsWith('.yaml') && !file.endsWith('.yml')) {
@@ -29,7 +32,21 @@ async function validate() {
         // Validate against schema
         const validatedServer = ServerSchema.parse(data);
 
-        // Extra: Validate config JSON for each installation
+        // Duplicate id check
+        if (ids[validatedServer.id]) {
+          console.error(`❌ Duplicate server id '${validatedServer.id}' found in: ${file} and ${ids[validatedServer.id]}`);
+          duplicateFound = true;
+        } else {
+          ids[validatedServer.id] = file;
+        }
+        // Duplicate name check
+        if (names[validatedServer.name]) {
+          console.error(`❌ Duplicate server name '${validatedServer.name}' found in: ${file} and ${names[validatedServer.name]}`);
+          duplicateFound = true;
+        } else {
+          names[validatedServer.name] = file;
+        }
+
         for (const inst of validatedServer.installations) {
           try {
             JSON.parse(inst.config);
@@ -58,6 +75,12 @@ async function validate() {
         }
       }
     }
+
+    if (duplicateFound) {
+      console.error('💥 Duplicate server ids or names found. Please fix before proceeding.');
+      process.exit(1);
+    }
+
     if (errorCount > 0) {
       console.log(`❌ Invalid servers: ${errorCount}`);
       console.log('\n💡 Please fix the validation errors before building the registry.');
