@@ -1,26 +1,26 @@
 {
   "version": "1.0.0",
-  "lastUpdated": 1751265038,
+  "lastUpdated": 1751351400,
   "servers": {
     "filesystem": {
-      "stars": 56765,
+      "stars": 56961,
       "lastCommit": 1751257963,
-      "updatedAt": 1751265038
+      "updatedAt": 1751351400
     },
     "github": {
-      "stars": 16591,
-      "lastCommit": 1751040653,
-      "updatedAt": 1751265038
+      "stars": 16647,
+      "lastCommit": 1751312569,
+      "updatedAt": 1751351400
     },
     "context7": {
-      "stars": 16084,
-      "lastCommit": 1750923365,
-      "updatedAt": 1751265038
+      "stars": 16344,
+      "lastCommit": 1751289669,
+      "updatedAt": 1751351400
     },
     "sequentialthinking": {
-      "stars": 56765,
+      "stars": 56961,
       "lastCommit": 1751257963,
-      "updatedAt": 1751265038
+      "updatedAt": 1751351400
     }
   }
 }
