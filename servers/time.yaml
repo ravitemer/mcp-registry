@@ -1,0 +1,75 @@
+id: time
+name: Time
+description: >-
+  Provides time and timezone conversion capabilities using IANA timezone names,
+  with automatic system timezone detection and support for current time queries.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/time
+category: datetime
+tags:
+  - timezone
+  - time-conversion
+  - datetime
+  - scheduling
+  - automation
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-time"]
+      }
+    prerequisites:
+      - Python and uv
+    transports:
+      - stdio
+  - name: Python
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_time"]
+      }
+    prerequisites:
+      - Python
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/time"]
+      }
+    prerequisites:
+      - Docker
+    transports:
+      - stdio
+  - name: UVX with Custom Timezone
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-time", "--local-timezone=${LOCAL_TIMEZONE}"]
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: Local Timezone
+        key: LOCAL_TIMEZONE
+        placeholder: America/New_York
+    transports:
+      - stdio
+  - name: Python/Pip with Custom Timezone
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_time", "--local-timezone=${LOCAL_TIMEZONE}"]
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: Local Timezone
+        key: LOCAL_TIMEZONE
+        placeholder: America/New_York
+    transports:
+      - stdio
+featured: false
+verified: true

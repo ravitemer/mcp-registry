@@ -1,0 +1,46 @@
+id: sqlite
+name: SQLite
+description: >-
+  Provides database interaction and business intelligence capabilities through
+  SQLite, enabling SQL queries, data analysis, and automated business insight
+  generation.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sqlite
+category: database-management
+tags:
+  - sql
+  - data-analysis
+  - business-intelligence
+  - database-management
+  - sqlite
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-sqlite", "--db-path", "${DB_PATH}"]
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: Database Path
+        key: DB_PATH
+        placeholder: /path/to/database.db
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "-v", "mcp-sqlite:/mcp", "mcp/sqlite", "--db-path", "${DB_PATH}"]
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Database Path
+        key: DB_PATH
+        placeholder: /path/to/database.db
+    transports:
+      - stdio
+featured: false
+verified: true

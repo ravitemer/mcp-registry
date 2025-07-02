@@ -1,0 +1,46 @@
+id: postgres
+name: PostgreSQL Reader
+description: >-
+  Provides read-only access to PostgreSQL databases, allowing LLMs to inspect
+  database schemas and execute read-only queries within protected transactions.
+author: modelcontextprotocol
+url: >-
+  https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres
+category: database-management
+tags:
+  - postgresql
+  - database-queries
+  - schema-inspection
+  - read-only
+  - sql
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-postgres", "${POSTGRESQL_URL}"]
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: PostgreSQL URL
+        key: POSTGRESQL_URL
+        placeholder: postgresql://user:password@localhost:5432/mydb
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/postgres", "${POSTGRESQL_URL}"]
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: PostgreSQL URL
+        key: POSTGRESQL_URL
+        placeholder: postgresql://user:password@localhost:5432/mydb
+    transports:
+      - stdio
+featured: false
+verified: true

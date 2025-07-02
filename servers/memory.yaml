@@ -1,0 +1,55 @@
+id: memory
+name: Knowledge Graph Memory
+description: >-
+  A persistent memory system using a local knowledge graph that enables AI
+  assistants to remember information about users across conversations through
+  entities, relations, and observations.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/memory
+category: knowledge-graph
+tags:
+  - knowledge-graph
+  - persistent-memory
+  - entity-management
+  - graph-database
+  - memory-storage
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "-v", "claude-memory:/app/dist", "--rm", "mcp/memory"]
+      }
+    prerequisites:
+      - Docker
+    transports:
+      - stdio
+  - name: Custom NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-memory"],
+        "env": {
+          "MEMORY_FILE_PATH": "${MEMORY_FILE_PATH}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Memory File Path
+        key: MEMORY_FILE_PATH
+        placeholder: /path/to/custom/memory.json
+    transports:
+      - stdio
+featured: false
+verified: true

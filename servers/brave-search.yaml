@@ -1,0 +1,52 @@
+id: brave_search
+name: Brave Search
+description: >-
+  Integrates Brave Search API to provide comprehensive web and local search
+  capabilities with smart filtering, pagination, and automatic fallbacks.
+author: modelcontextprotocol
+url: >-
+  https://github.com/modelcontextprotocol/servers-archived/tree/main/src/brave-search
+category: web-search
+tags:
+  - search-engine
+  - local-search
+  - web-search
+  - brave-api
+  - content-discovery
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Brave API Key
+        key: BRAVE_API_KEY
+        placeholder: your_brave_api_key_here
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "BRAVE_API_KEY", "mcp/brave-search"],
+        "env": {
+          "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Brave API Key
+        key: BRAVE_API_KEY
+        placeholder: your_brave_api_key_here
+    transports:
+      - stdio
+featured: false
+verified: true

@@ -1,0 +1,67 @@
+id: sentry
+name: Sentry
+description: >-
+  Retrieves and analyzes error reports, stacktraces, and debugging information
+  from Sentry.io, enabling AI assistants to inspect and understand application
+  issues.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers-archived/tree/main/src/sentry
+category: development
+tags:
+  - error-tracking
+  - debugging
+  - stacktraces
+  - issue-monitoring
+  - application-monitoring
+installations:
+  - name: Remote
+    config: |-
+      {
+          "url": "https://mcp.sentry.dev/mcp"
+      }
+    transports:
+      - streamable-http
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-sentry", "--auth-token", "${SENTRY_AUTH_TOKEN}"]
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: Sentry Auth Token
+        key: SENTRY_AUTH_TOKEN
+        placeholder: your_sentry_auth_token_here
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/sentry", "--auth-token", "${SENTRY_AUTH_TOKEN}"]
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Sentry Auth Token
+        key: SENTRY_AUTH_TOKEN
+        placeholder: your_sentry_auth_token_here
+    transports:
+      - stdio
+  - name: Python
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_sentry", "--auth-token", "${SENTRY_AUTH_TOKEN}"]
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: Sentry Auth Token
+        key: SENTRY_AUTH_TOKEN
+        placeholder: your_sentry_auth_token_here
+    transports:
+      - stdio
+featured: false
+verified: true

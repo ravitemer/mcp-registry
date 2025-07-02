@@ -1,0 +1,52 @@
+id: tavily
+name: Tavily
+description: >-
+  Enables real-time web search and data extraction capabilities through Tavily's
+  API, providing AI assistants with filtered search results and intelligent
+  content extraction from web pages.
+author: tavily-ai
+url: https://github.com/tavily-ai/tavily-mcp
+category: web-search
+tags:
+  - web-search
+  - data-extraction
+  - real-time-information
+  - content-filtering
+  - news-search
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "tavily-mcp"],
+        "env": {
+          "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Tavily API Key
+        key: TAVILY_API_KEY
+        placeholder: your_tavily_api_key_here
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "TAVILY_API_KEY", "tavily/mcp"],
+        "env": {
+          "TAVILY_API_KEY": "${TAVILY_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Tavily API Key
+        key: TAVILY_API_KEY
+        placeholder: your_tavily_api_key_here
+    transports:
+      - stdio
+featured: false
+verified: true

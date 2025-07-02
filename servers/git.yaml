@@ -1,0 +1,74 @@
+id: git
+name: Git Tools
+description: >-
+  Provides Git repository interaction and automation tools for reading,
+  searching, and manipulating Git repositories through commands like status,
+  diff, commit, branch management, and more.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/git
+category: version-control
+tags:
+  - git
+  - version-control
+  - repository-management
+  - source-control
+  - development
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-git", "--repository", "${REPOSITORY_PATH}"]
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: Repository Path
+        key: REPOSITORY_PATH
+        placeholder: /path/to/git/repo
+    transports:
+      - stdio
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/inspector", "uvx", "mcp-server-git", "--repository", "${REPOSITORY_PATH}"]
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Repository Path
+        key: REPOSITORY_PATH
+        placeholder: /path/to/git/repo
+    transports:
+      - stdio
+  - name: Python/Pip
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_git", "--repository", "${REPOSITORY_PATH}"]
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: Repository Path
+        key: REPOSITORY_PATH
+        placeholder: /path/to/git/repo
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "--rm", "-i", "--mount", "type=bind,src=${REPOSITORY_PATH},dst=/workspace", "mcp/git"]
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Repository Path
+        key: REPOSITORY_PATH
+        placeholder: /path/to/git/repo
+    transports:
+      - stdio
+featured: false
+verified: true
