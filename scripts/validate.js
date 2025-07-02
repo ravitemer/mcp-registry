@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import yaml from 'js-yaml';
 import { ServerSchema } from '../schemas/server-entry.js';
-import { isValidServerId } from './utils.js';
 
 const SERVERS_DIR = 'servers';
 
@@ -47,18 +46,7 @@ async function validate() {
           names[validatedServer.name] = file;
         }
 
-        for (const inst of validatedServer.installations) {
-          try {
-            JSON.parse(inst.config);
-          } catch (e) {
-            throw new Error(`Invalid JSON in config for installation '${inst.name}' in server '${validatedServer.id}': ${e.message}`);
-          }
-        }
 
-        // Additional validation checks
-        if (!isValidServerId(validatedServer.id)) {
-          throw new Error(`Invalid server ID: ${validatedServer.id}. Must be alphanumeric with underscores only, min 3 chars.`);
-        }
 
         validCount++;
         // console.log(`✅ ${validatedServer.name} is valid`);

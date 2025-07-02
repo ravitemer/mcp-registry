@@ -6,7 +6,7 @@ import { z } from 'zod';
  */
 export const ParameterSchema = z.object({
   name: z.string().min(1).describe("Human-readable name for the parameter"),
-  key: z.string().min(1).describe("The placeholder key used in configuration templates"),
+  key: z.string().min(1).regex(/^[A-Z0-9_]+$/, "Key must be UPPER_CASE with underscores").describe("The placeholder key used in configuration templates"),
   description: z.string().optional().describe("Detailed description of the parameter"),
   placeholder: z.string().optional().describe("Example value shown to the user"),
   required: z.boolean().default(true).describe("Whether this parameter is required"),
@@ -46,7 +46,7 @@ export const InstallationSchema = z.object({
  */
 export const ServerSchema = z.object({
   // Basic information
-  id: z.string().min(1).describe("Unique identifier for the server (kebab-case)"),
+  id: z.string().min(3).regex(/^[a-zA-Z0-9_]{3,}$/, "ID must be alphanumeric with underscores only, minimum 3 characters").describe("Unique identifier for the server (alphanumeric and underscores only)"),
   name: z.string().min(1).describe("Human-readable display name"),
   description: z.string().min(1).max(200).describe("Brief description (under 200 chars)"),
 

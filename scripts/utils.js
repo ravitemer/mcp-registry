@@ -9,7 +9,6 @@
 export function getCurrentTimestamp() {
   return Math.floor(Date.now() / 1000);
 }
-
 /**
  * Validate if a string is a valid server ID (alphanumeric and underscores only, min 3 chars)
  * @param {string} id - Server ID to validate
