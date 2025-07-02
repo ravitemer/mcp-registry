@@ -1,0 +1,71 @@
+id: apify
+name: Apify Actors
+description: >-
+  Enables AI assistants to interact with Apify's web scraping and automation
+  actors, providing access to tools for data extraction, web searching, social
+  media analysis, and more.
+author: apify
+url: https://github.com/apify/actors-mcp-server
+category: web-scraping
+tags:
+  - web-scraping
+  - data-extraction
+  - automation
+  - actor-management
+  - apify-platform
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@apify/actors-mcp-server"],
+        "env": {
+          "APIFY_TOKEN": "${APIFY_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Apify API Token
+        key: APIFY_TOKEN
+        placeholder: your_apify_api_token
+    transports:
+      - stdio
+  - name: NPX + Actors
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@apify/actors-mcp-server", "--actors", "${ACTOR_LIST}"],
+        "env": {
+          "APIFY_TOKEN": "${APIFY_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Apify API Token
+        key: APIFY_TOKEN
+        placeholder: your_apify_api_token
+      - name: Actor List
+        key: ACTOR_LIST
+        placeholder: lukaskrivka/google-maps-with-contact-details,apify/instagram-scraper
+    transports:
+      - stdio
+  - name: Remote
+    config: |-
+      {
+        "type": "sse",
+        "url": "https://actors-mcp-server.apify.actor/sse",
+        "env": {
+          "APIFY_TOKEN": "${APIFY_TOKEN}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: Apify API Token
+        key: APIFY_TOKEN
+        placeholder: your_apify_api_token
+    transports:
+      - sse
+featured: false
+verified: true

@@ -1,0 +1,68 @@
+id: aws_kb_retrieval_server
+name: AWS Knowledge Base
+description: >-
+  Retrieves information from AWS Knowledge Base using Bedrock Agent Runtime,
+  supporting RAG-based queries with customizable result counts.
+author: modelcontextprotocol
+url: >-
+  https://github.com/modelcontextprotocol/servers-archived/tree/main/src/aws-kb-retrieval-server
+category: knowledge-retrieval
+tags:
+  - aws
+  - bedrock
+  - rag
+  - knowledge-retrieval
+  - search
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-aws-kb-retrieval"],
+        "env": {
+          "AWS_ACCESS_KEY_ID": "${AWS_ACCESS_KEY_ID}",
+          "AWS_SECRET_ACCESS_KEY": "${AWS_SECRET_ACCESS_KEY}",
+          "AWS_REGION": "${AWS_REGION}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: AWS Access Key ID
+        key: AWS_ACCESS_KEY_ID
+        placeholder: your_aws_access_key_id
+      - name: AWS Secret Access Key
+        key: AWS_SECRET_ACCESS_KEY
+        placeholder: your_aws_secret_access_key
+      - name: AWS Region
+        key: AWS_REGION
+        placeholder: us-east-1
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "AWS_ACCESS_KEY_ID", "-e", "AWS_SECRET_ACCESS_KEY", "-e", "AWS_REGION", "mcp/aws-kb-retrieval-server"],
+        "env": {
+          "AWS_ACCESS_KEY_ID": "${AWS_ACCESS_KEY_ID}",
+          "AWS_SECRET_ACCESS_KEY": "${AWS_SECRET_ACCESS_KEY}",
+          "AWS_REGION": "${AWS_REGION}"
+        }
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: AWS Access Key ID
+        key: AWS_ACCESS_KEY_ID
+        placeholder: your_aws_access_key_id
+      - name: AWS Secret Access Key
+        key: AWS_SECRET_ACCESS_KEY
+        placeholder: your_aws_secret_access_key
+      - name: AWS Region
+        key: AWS_REGION
+        placeholder: us-east-1
+    transports:
+      - stdio
+featured: false
+verified: true

@@ -1,0 +1,100 @@
+id: redis
+name: Redis
+description: >-
+  Provides access to Redis key-value stores, enabling operations like setting,
+  getting, deleting, and listing keys with optional expiration time support.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/redis
+category: database-management
+tags:
+  - redis
+  - key-value-store
+  - caching
+  - data-storage
+  - database-operations
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-redis", "--url", "${REDIS_URL}"]
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: Redis URL
+        key: REDIS_URL
+        placeholder: redis://localhost:6379
+    transports:
+      - stdio
+  - name: PIP
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_redis", "--url", "${REDIS_URL}"]
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: Redis URL
+        key: REDIS_URL
+        placeholder: redis://localhost:6379
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/redis", "--url", "${REDIS_URL}"]
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: Redis URL
+        key: REDIS_URL
+        placeholder: redis://localhost:6379
+    transports:
+      - stdio
+  - name: UVX Auth
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-redis", "--url", "${REDIS_URL}", "--username", "${REDIS_USERNAME}", "--password", "${REDIS_PASSWORD}"]
+      }
+    prerequisites:
+      - Python
+      - uv
+    parameters:
+      - name: Redis URL
+        key: REDIS_URL
+        placeholder: redis://localhost:6379
+      - name: Redis Username
+        key: REDIS_USERNAME
+        placeholder: your_redis_username
+      - name: Redis Password
+        key: REDIS_PASSWORD
+        placeholder: your_redis_password
+    transports:
+      - stdio
+  - name: PIP Auth
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_redis", "--url", "${REDIS_URL}", "--username", "${REDIS_USERNAME}", "--password", "${REDIS_PASSWORD}"]
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: Redis URL
+        key: REDIS_URL
+        placeholder: redis://localhost:6379
+      - name: Redis Username
+        key: REDIS_USERNAME
+        placeholder: your_redis_username
+      - name: Redis Password
+        key: REDIS_PASSWORD
+        placeholder: your_redis_password
+    transports:
+      - stdio
+featured: false
+verified: true

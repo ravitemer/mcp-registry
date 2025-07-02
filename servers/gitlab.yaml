@@ -1,0 +1,81 @@
+id: gitlab
+name: GitLab
+description: >-
+  Enables comprehensive GitLab project management including file operations,
+  issue tracking, merge requests, and repository management through the GitLab
+  API.
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab
+category: source-control
+tags:
+  - gitlab
+  - git
+  - repository-management
+  - collaboration
+  - ci-cd
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-gitlab"],
+        "env": {
+          "GITLAB_PERSONAL_ACCESS_TOKEN": "${GITLAB_PERSONAL_ACCESS_TOKEN}",
+          "GITLAB_API_URL": "${GITLAB_API_URL}"
+        }
+      }
+    prerequisites:
+      - Python and uv
+    parameters:
+      - name: GitLab Personal Access Token
+        key: GITLAB_PERSONAL_ACCESS_TOKEN
+        placeholder: your_gitlab_personal_access_token
+      - name: GitLab API URL
+        key: GITLAB_API_URL
+        placeholder: https://gitlab.com/api/v4
+    transports:
+      - stdio
+  - name: PIP
+    config: |-
+      {
+        "command": "python",
+        "args": ["-m", "mcp_server_gitlab"],
+        "env": {
+          "GITLAB_PERSONAL_ACCESS_TOKEN": "${GITLAB_PERSONAL_ACCESS_TOKEN}",
+          "GITLAB_API_URL": "${GITLAB_API_URL}"
+        }
+      }
+    prerequisites:
+      - Python
+    parameters:
+      - name: GitLab Personal Access Token
+        key: GITLAB_PERSONAL_ACCESS_TOKEN
+        placeholder: your_gitlab_personal_access_token
+      - name: GitLab API URL
+        key: GITLAB_API_URL
+        placeholder: https://gitlab.com/api/v4
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/gitlab"],
+        "env": {
+          "GITLAB_PERSONAL_ACCESS_TOKEN": "${GITLAB_PERSONAL_ACCESS_TOKEN}",
+          "GITLAB_API_URL": "${GITLAB_API_URL}"
+        }
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: GitLab Personal Access Token
+        key: GITLAB_PERSONAL_ACCESS_TOKEN
+        placeholder: your_gitlab_personal_access_token
+      - name: GitLab API URL
+        key: GITLAB_API_URL
+        placeholder: https://gitlab.com/api/v4
+    transports:
+      - stdio
+featured: false
+verified: true

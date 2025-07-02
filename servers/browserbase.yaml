@@ -1,0 +1,105 @@
+id: browserbase
+name: Browserbase
+description: >-
+  Cloud browser automation server enabling LLMs to interact with web pages, take
+  screenshots, extract data, and execute JavaScript using Browserbase and
+  Puppeteer.
+author: browserbase
+url: https://github.com/browserbase/mcp-server-browserbase
+category: browser-automation
+tags:
+  - web-automation
+  - puppeteer
+  - screenshot-capture
+  - data-extraction
+  - javascript-execution
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@browserbasehq/mcp"],
+        "env": {
+          "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}",
+          "BROWSERBASE_PROJECT_ID": "${BROWSERBASE_PROJECT_ID}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Browserbase API Key
+        key: BROWSERBASE_API_KEY
+        placeholder: your_browserbase_api_key
+      - name: Browserbase Project ID
+        key: BROWSERBASE_PROJECT_ID
+        placeholder: your_browserbase_project_id
+    transports:
+      - stdio
+  - name: NPX + Proxies
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@browserbasehq/mcp", "--proxies"],
+        "env": {
+          "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}",
+          "BROWSERBASE_PROJECT_ID": "${BROWSERBASE_PROJECT_ID}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Browserbase API Key
+        key: BROWSERBASE_API_KEY
+        placeholder: your_browserbase_api_key
+      - name: Browserbase Project ID
+        key: BROWSERBASE_PROJECT_ID
+        placeholder: your_browserbase_project_id
+    transports:
+      - stdio
+  - name: NPX + Stealth
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@browserbasehq/mcp", "--advancedStealth"],
+        "env": {
+          "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}",
+          "BROWSERBASE_PROJECT_ID": "${BROWSERBASE_PROJECT_ID}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Browserbase API Key
+        key: BROWSERBASE_API_KEY
+        placeholder: your_browserbase_api_key
+      - name: Browserbase Project ID
+        key: BROWSERBASE_PROJECT_ID
+        placeholder: your_browserbase_project_id
+    transports:
+      - stdio
+  - name: NPX + Context
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@browserbasehq/mcp", "--contextId", "${BROWSERBASE_CONTEXT_ID}"],
+        "env": {
+          "BROWSERBASE_API_KEY": "${BROWSERBASE_API_KEY}",
+          "BROWSERBASE_PROJECT_ID": "${BROWSERBASE_PROJECT_ID}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Browserbase API Key
+        key: BROWSERBASE_API_KEY
+        placeholder: your_browserbase_api_key
+      - name: Browserbase Project ID
+        key: BROWSERBASE_PROJECT_ID
+        placeholder: your_browserbase_project_id
+      - name: Browserbase Context ID
+        key: BROWSERBASE_CONTEXT_ID
+        placeholder: your_browserbase_context_id
+    transports:
+      - stdio
+featured: false
+verified: true
