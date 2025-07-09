@@ -43,7 +43,7 @@ installations:
       - Docker
     transports:
       - stdio
-  - name: UVX with Custom Timezone
+  - name: UVX + Timezone
     config: |-
       {
         "command": "uvx",
@@ -57,7 +57,7 @@ installations:
         placeholder: America/New_York
     transports:
       - stdio
-  - name: Python/Pip with Custom Timezone
+  - name: Pip + Timezone
     config: |-
       {
         "command": "python",
