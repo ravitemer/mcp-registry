@@ -1,0 +1,35 @@
+id: riza
+name: Riza
+description: >-
+  Provides a secure code interpreter for executing LLM-generated code, with
+  features for creating, saving, managing, and executing code tools in an
+  isolated environment.
+author: riza-io
+url: https://github.com/riza-io/riza-mcp
+category: code-interpreter
+tags:
+  - code-execution
+  - sandbox
+  - code-interpreter
+  - tool-management
+  - security
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@riza-io/riza-mcp"],
+        "env": {
+          "RIZA_API_KEY": "${RIZA_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: Riza API Key
+        key: RIZA_API_KEY
+        placeholder: your_riza_api_key
+    transports:
+      - stdio
+featured: false
+verified: false
