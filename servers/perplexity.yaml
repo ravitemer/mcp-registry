@@ -1,0 +1,47 @@
+id: perplexity
+name: Perplexity MCP
+description: >-
+  An MCP server that enables web search functionality using Perplexity AI's API,
+  allowing clients to perform real-time web queries and retrieve up-to-date results.
+author: jsonallen
+url: https://github.com/jsonallen/perplexity-mcp
+license: MIT
+category: web-search
+tags:
+  - perplexity
+  - web-search
+  - ai
+  - api
+  - information-retrieval
+  - automation
+installations:
+  - name: UVX
+    description: Run via uvx 
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["perplexity-mcp"],
+        "env": {
+          "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
+          "PERPLEXITY_MODEL": "${PERPLEXITY_MODEL}"
+        }
+      }
+    prerequisites:
+      - Python 3.11+
+      - uv
+      - Perplexity AI API key
+    parameters:
+      - name: Perplexity API Key
+        key: PERPLEXITY_API_KEY
+        description: API key for authenticating with Perplexity AI
+        placeholder: ppx_sk_your_api_key
+      - name: Perplexity Model
+        key: PERPLEXITY_MODEL
+        description: >-
+          Optional. Model to use for search (e.g., sonar, sonar-pro, sonar-reasoning, sonar-reasoning-pro, sonar-deep-research, r1-1776)
+        placeholder: sonar
+        required: false
+    transports:
+      - stdio
+featured: false
+verified: false

@@ -1,0 +1,57 @@
+id: figma
+name: Framelink Figma MCP
+description: >-
+  MCP server that provides Figma layout and styling information to AI coding agents like Cursor, enabling accurate design-to-code workflows.
+author: GLips
+url: https://github.com/GLips/Figma-Context-MCP
+license: MIT
+category: design
+tags:
+  - figma
+  - design-integration
+  - cursor
+  - ai-coding
+  - layout
+installations:
+  - name: NPX
+    description: Run using npx with your Figma API key
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "figma-developer-mcp", "--figma-api-key=${FIGMA_API_KEY}", "--stdio"],
+        "env": {
+          "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >= 18
+      - Figma account and API key
+    parameters:
+      - name: Figma API Key
+        key: FIGMA_API_KEY
+        description: Personal access token from your Figma account
+        placeholder: figd_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    transports:
+      - stdio
+  - name: NPX (Windows)
+    description: Run using Windows cmd with your Figma API key
+    config: |-
+      {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "figma-developer-mcp", "--figma-api-key=${FIGMA_API_KEY}", "--stdio"],
+        "env": {
+          "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >= 18
+      - Figma account and API key
+    parameters:
+      - name: Figma API Key
+        key: FIGMA_API_KEY
+        description: Personal access token from your Figma account
+        placeholder: figd_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    transports:
+      - stdio
+featured: false
+verified: false

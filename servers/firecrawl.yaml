@@ -1,0 +1,63 @@
+id: firecrawl
+name: Firecrawl MCP Server
+description: >-
+  Official Firecrawl MCP Server providing advanced web scraping, crawling, batch processing, and content extraction for LLM clients like Cursor and Claude.
+author: mendableai
+url: https://github.com/mendableai/firecrawl-mcp-server
+license: MIT
+category: web-scraping
+tags:
+  - web-scraping
+  - crawling
+  - content-extraction
+  - batch-processing
+  - search-api
+  - javascript-rendering
+installations:
+  - name: NPX
+    description: Run the server using npx with your Firecrawl API key.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "firecrawl-mcp"],
+        "env": {
+          "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >= 18
+    parameters:
+      - name: Firecrawl API Key
+        key: FIRECRAWL_API_KEY
+        description: Your Firecrawl API key from https://www.firecrawl.dev/app/api-keys
+        placeholder: fc-xxxxxxxxxxxxxxxxxxxxxxxx
+    transports:
+      - stdio
+  - name: NPX (Self-hosted) 
+    description: Use a custom Firecrawl API endpoint for self-hosted deployments.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "firecrawl-mcp"],
+        "env": {
+          "FIRECRAWL_API_URL": "${FIRECRAWL_API_URL}",
+          "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >= 18
+      - Self-hosted Firecrawl API endpoint
+    parameters:
+      - name: Firecrawl API URL
+        key: FIRECRAWL_API_URL
+        description: Custom Firecrawl API endpoint for self-hosted instances
+        placeholder: https://firecrawl.your-domain.com
+      - name: Firecrawl API Key
+        key: FIRECRAWL_API_KEY
+        description: API key for your self-hosted Firecrawl instance (if required)
+        placeholder: fc-xxxxxxxxxxxxxxxxxxxxxxxx
+        required: false
+    transports:
+      - stdio
+featured: true
+verified: true
