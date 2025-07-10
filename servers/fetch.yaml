@@ -1,0 +1,70 @@
+id: fetch
+name: Fetch
+description: >-
+  Provides web content fetching capabilities for LLMs, retrieving and converting HTML pages to markdown for easier consumption
+author: modelcontextprotocol
+url: https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
+license: MIT
+category: web-scraping
+tags:
+  - web-fetching
+  - html-to-markdown
+  - content-extraction
+  - web-scraping
+  - automation
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-fetch"]
+      }
+    prerequisites:
+      - python
+      - uv
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "mcp/fetch"]
+      }
+    prerequisites:
+      - Docker
+    transports:
+      - stdio
+  - name: UVX + Proxy
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-fetch", "--proxy-url=${PROXY_URL}"]
+      }
+    prerequisites:
+      - python
+      - uv
+    parameters:
+      - name: Proxy URL
+        key: PROXY_URL
+        description: URL of the HTTP/HTTPS proxy to use for outgoing requests
+        placeholder: http://localhost:8080
+    transports:
+      - stdio
+  - name: UVX + Custom User-Agent
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["mcp-server-fetch", "--user-agent=${USER_AGENT}"]
+      }
+    prerequisites:
+      - python
+      - uv
+    parameters:
+      - name: User-Agent
+        key: USER_AGENT
+        description: Custom user-agent string for outgoing requests
+        placeholder: ModelContextProtocol/1.0 (Custom; +https://github.com/modelcontextprotocol/servers)
+    transports:
+      - stdio
+featured: true
+verified: true

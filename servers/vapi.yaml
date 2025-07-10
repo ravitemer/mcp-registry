@@ -1,0 +1,71 @@
+id: vapi
+name: Vapi 
+description: >-
+  Integrates with Vapi APIs enabling voice agent automation, outbound calls, and assistant management through local or remote MCP connections.
+author: VapiAI
+url: https://github.com/VapiAI/mcp-server
+license: MIT
+category: voice-agents
+tags:
+  - voice-agents
+  - outbound-calls
+  - automation
+installations:
+  - name: Remote
+    config: |-
+      {
+        "url": "https://mcp.vapi.ai/mcp",
+        "headers": {
+          "Authorization": "Bearer ${VAPI_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Vapi account
+      - Vapi API key
+    parameters:
+      - name: Vapi API Token
+        key: VAPI_TOKEN
+        description: API key from your Vapi dashboard (https://dashboard.vapi.ai/org/api-keys)
+        placeholder: vapi_sk_live_xxx
+    transports:
+      - streamable-http
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@vapi-ai/mcp-server"],
+        "env": {
+          "VAPI_TOKEN": "${VAPI_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Node.js
+      - Vapi API key
+    parameters:
+      - name: Vapi API Token
+        key: VAPI_TOKEN
+        description: API key from your Vapi dashboard (https://dashboard.vapi.ai/org/api-keys)
+        placeholder: vapi_sk_live_xxx
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": ["run", "-i", "--rm", "-e", "VAPI_TOKEN", "ghcr.io/vapiai/mcp-server"],
+        "env": {
+          "VAPI_TOKEN": "${VAPI_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Docker
+      - Vapi API key
+    parameters:
+      - name: Vapi API Token
+        key: VAPI_TOKEN
+        description: API key from your Vapi dashboard (https://dashboard.vapi.ai/org/api-keys)
+        placeholder: vapi_sk_live_xxx
+    transports:
+      - stdio
+featured: false
+verified: false
