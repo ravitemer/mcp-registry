@@ -1,0 +1,66 @@
+id: supabase
+name: Supabase MCP Server 
+description: >-
+  Query MCP enables end-to-end management of Supabase via chat interface: read & write query executions, management API support, automatic migration versioning, access to logs and much more.
+author: alexander-zuev
+url: https://github.com/alexander-zuev/supabase-mcp-server
+license: Apache-2.0
+category: database
+tags:
+  - supabase
+  - database
+  - sql
+  - management-api
+  - postgres
+  - auth
+installations:
+  - name: UVX
+    description: Run via uvx 
+    config: |-
+      {
+        "command": "uv",
+        "args": ["run", "supabase-mcp-server"],
+        "env": {
+          "QUERY_API_KEY": "${QUERY_API_KEY}",
+          "SUPABASE_PROJECT_REF": "${SUPABASE_PROJECT_REF}",
+          "SUPABASE_DB_PASSWORD": "${SUPABASE_DB_PASSWORD}",
+          "SUPABASE_REGION": "${SUPABASE_REGION}",
+          "SUPABASE_ACCESS_TOKEN": "${SUPABASE_ACCESS_TOKEN}",
+          "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+        }
+      }
+    prerequisites:
+      - Python 3.12+
+      - uv
+    parameters:
+      - name: Query API Key
+        key: QUERY_API_KEY
+        description: API key from thequery.dev (required for all operations)
+        placeholder: your-api-key
+      - name: Supabase Project Reference
+        key: SUPABASE_PROJECT_REF
+        description: Your Supabase project reference ID (or local host:port)
+        placeholder: your-project-ref
+      - name: Supabase Database Password
+        key: SUPABASE_DB_PASSWORD
+        description: Your database password
+        placeholder: your-db-password
+      - name: Supabase Region
+        key: SUPABASE_REGION
+        description: AWS region where your Supabase project is hosted (defaults to us-east-1)
+        placeholder: us-east-1
+        required: false
+      - name: Supabase Access Token
+        key: SUPABASE_ACCESS_TOKEN
+        description: Personal access token for Supabase Management API (optional)
+        placeholder: your-access-token
+        required: false
+      - name: Supabase Service Role Key
+        key: SUPABASE_SERVICE_ROLE_KEY
+        description: Service role key for Auth Admin SDK (optional)
+        placeholder: your-service-role-key
+        required: false
+    transports:
+      - stdio
+featured: false
+verified: false

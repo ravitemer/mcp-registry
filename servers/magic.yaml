@@ -1,0 +1,35 @@
+id: magic
+name: Magic MCP
+description: >-
+  AI-powered MCP server by 21st-dev for generating modern UI components from natural language, with seamless LLM integration.
+author: 21st-dev
+url: https://github.com/21st-dev/magic-mcp
+license: MIT
+category: ui-generation
+tags:
+  - ui-generation
+  - frontend
+  - components
+installations:
+  - name: NPX
+    description: Install and run Magic MCP via npx 
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@21st-dev/magic@latest"],
+        "env": {
+          "API_KEY": "${API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js 
+      - API key from https://21st.dev/magic/console
+    parameters:
+      - name: 21st.dev Magic API Key
+        key: API_KEY
+        description: API key generated from the 21st.dev Magic Console
+        placeholder: sk-xxxxxxxxxxxxxxxxxxxx
+    transports:
+      - stdio
+featured: false
+verified: true

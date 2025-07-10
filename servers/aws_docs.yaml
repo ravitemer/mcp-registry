@@ -1,0 +1,69 @@
+id: aws_docs
+name: AWS Documentation MCP Server
+description: >-
+  Provides tools to access, search, and recommend AWS documentation, including markdown conversion and China region support.
+author: awslabs
+url: https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server
+license: Apache-2.0
+category: documentation
+tags:
+  - aws
+  - documentation
+  - search
+  - cloud
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["awslabs.aws-documentation-mcp-server@latest"],
+        "env": {
+          "FASTMCP_LOG_LEVEL": "${FASTMCP_LOG_LEVEL}",
+          "AWS_DOCUMENTATION_PARTITION": "${AWS_DOCUMENTATION_PARTITION}"
+        }
+      }
+    prerequisites:
+      - Python 3.10+
+      - uv
+    parameters:
+      - name: FastMCP Log Level
+        key: FASTMCP_LOG_LEVEL
+        placeholder: ERROR
+        required: false
+      - name: AWS Documentation Partition
+        key: AWS_DOCUMENTATION_PARTITION
+        description: Use 'aws' for global or 'aws-cn' for China region documentation
+        placeholder: aws
+    transports:
+      - stdio
+  - name: Docker
+    config: |-
+      {
+        "command": "docker",
+        "args": [
+          "run",
+          "--rm",
+          "--interactive",
+          "--env",
+          "FASTMCP_LOG_LEVEL=${FASTMCP_LOG_LEVEL}",
+          "--env",
+          "AWS_DOCUMENTATION_PARTITION=${AWS_DOCUMENTATION_PARTITION}",
+          "mcp/aws-documentation:latest"
+        ],
+        "env": {}
+      }
+    prerequisites:
+      - Docker
+    parameters:
+      - name: FastMCP Log Level
+        key: FASTMCP_LOG_LEVEL
+        placeholder: ERROR
+        required: false
+      - name: AWS Documentation Partition
+        key: AWS_DOCUMENTATION_PARTITION
+        description: Use 'aws' for global or 'aws-cn' for China region documentation
+        placeholder: aws
+    transports:
+      - stdio
+featured: false
+verified: false
