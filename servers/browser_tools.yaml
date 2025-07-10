@@ -1,0 +1,27 @@
+id: browser_tools
+name: BrowserTools MCP
+description: >-
+  Monitor browser logs, capture audits, and interact with your browser directly from Cursor and other MCP-compatible IDEs using a Chrome extension and local Node.js server.
+author: AgentDeskAI
+url: https://github.com/AgentDeskAI/browser-tools-mcp
+license: MIT
+category: browser-automation
+tags:
+  - browser-automation
+  - chrome-extension
+installations:
+  - name: NPX
+    description: >-
+      Installs and runs the BrowserTools MCP server locally via npx
+    config: |-
+      {
+        "command": "npx",
+        "args": ["@agentdeskai/browser-tools-mcp@latest"]
+      }
+    prerequisites:
+      - Node.js
+      - BrowserTools Chrome extension
+    transports:
+      - stdio
+featured: false
+verified: false

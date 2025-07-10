@@ -1,0 +1,82 @@
+id: playwright
+name: Playwright MCP
+description: >-
+  Provides browser automation capabilities using Playwright for MCP clients,
+  enabling LLMs to interact with web pages via structured accessibility
+  snapshots or vision mode.
+author: microsoft
+url: https://github.com/microsoft/playwright-mcp
+license: Apache-2.0
+category: browser-automation
+tags:
+  - playwright
+  - browser-automation
+  - vision
+installations:
+  - name: NPX
+    description: Run the Playwright MCP server using npx 
+    config: |-
+      {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@latest"
+        ]
+      }
+    prerequisites:
+      - Node.js 18 or newer
+    transports:
+      - stdio
+  - name: NPX (Vision Mode)
+    description: Run the Playwright MCP server in vision mode (uses screenshots).
+    config: |-
+      {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@latest",
+          "--vision"
+        ]
+      }
+    prerequisites:
+      - Node.js 18 or newer
+    transports:
+      - stdio
+  - name: NPX (Custom Port for SSE)
+    description: Run the Playwright MCP server with SSE transport on a custom port.
+    config: |-
+      {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@latest",
+          "--port",
+          "${PORT}"
+        ]
+      }
+    prerequisites:
+      - Node.js 18 or newer
+    parameters:
+      - name: Port
+        key: PORT
+        placeholder: "8931"
+    transports:
+      - stdio
+      - sse
+  - name: Docker
+    description: Run the Playwright MCP server in a Docker container (headless Chromium only).
+    config: |-
+      {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "--init",
+          "--pull=always",
+          "mcr.microsoft.com/playwright/mcp"
+        ]
+      }
+    prerequisites:
+      - Docker
+    transports:
+      - stdio
+featured: true
+verified: true

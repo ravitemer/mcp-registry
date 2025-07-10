@@ -1,0 +1,85 @@
+id: task_master
+name: Task Master
+description: >-
+  An AI-powered task-management system for developers, integrating with Cursor,
+  Lovable, Windsurf, Roo, and others, supporting multiple AI providers and
+  seamless project automation.
+author: eyaltoledano
+url: https://github.com/eyaltoledano/claude-task-master
+license: MIT WITH Commons-Clause
+category: project-management
+tags:
+  - task-management
+  - automation
+  - project-management
+installations:
+  - name: NPX
+    description: Run Task Master via npx 
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+        "env": {
+          "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+          "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}",
+          "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+          "GOOGLE_API_KEY": "${GOOGLE_API_KEY}",
+          "MISTRAL_API_KEY": "${MISTRAL_API_KEY}",
+          "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY}",
+          "XAI_API_KEY": "${XAI_API_KEY}",
+          "AZURE_OPENAI_API_KEY": "${AZURE_OPENAI_API_KEY}",
+          "OLLAMA_API_KEY": "${OLLAMA_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >=18.0.0
+    parameters:
+      - name: Anthropic API Key
+        key: ANTHROPIC_API_KEY
+        description: API key for Anthropic Claude models.
+        placeholder: sk-ant-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: Perplexity API Key
+        key: PERPLEXITY_API_KEY
+        description: API key for Perplexity models.
+        placeholder: pk-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: OpenAI API Key
+        key: OPENAI_API_KEY
+        description: API key for OpenAI models.
+        placeholder: sk-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: Google Gemini API Key
+        key: GOOGLE_API_KEY
+        description: API key for Google Gemini models.
+        placeholder: ya29.xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: Mistral API Key
+        key: MISTRAL_API_KEY
+        description: API key for Mistral models.
+        placeholder: mistral-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: OpenRouter API Key
+        key: OPENROUTER_API_KEY
+        description: API key for OpenRouter models.
+        placeholder: or-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: xAI API Key
+        key: XAI_API_KEY
+        description: API key for xAI models.
+        placeholder: xai-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: Azure OpenAI API Key
+        key: AZURE_OPENAI_API_KEY
+        description: API key for Azure OpenAI models.
+        placeholder: azure-xxxxxxxxxxxxxxxxxxxx
+        required: false
+      - name: Ollama API Key
+        key: OLLAMA_API_KEY
+        description: API key for Ollama models (if required).
+        placeholder: ollama-xxxxxxxxxxxxxxxxxxxx
+        required: false
+    transports:
+      - stdio
+featured: true
+verified: true
