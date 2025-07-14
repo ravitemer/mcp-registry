@@ -3,75 +3,1082 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Registry</title>
+    <title>MCP Registry - Model Context Protocol Server Browser</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; margin-bottom: 40px; }
-        .endpoint { background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0; }
-        .stats { display: flex; gap: 20px; justify-content: center; margin: 20px 0; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 2em; font-weight: bold; color: #007acc; }
-        .stat-label { color: #666; }
-        .last-updated { text-align: center; color: #666; margin: 20px 0; }
-        pre { background: #f8f8f8; padding: 10px; border-radius: 5px; overflow-x: auto; }
-        .link { color: #007acc; text-decoration: none; }
-        .link:hover { text-decoration: underline; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .header-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .header-link:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        /* Stats Bar */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.95);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Search and Filter Bar */
+        .controls {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .filter-group select {
+            padding: 10px 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Server Grid */
+        .servers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .server-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.15);
+        }
+
+        .server-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .server-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .server-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .server-author {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .server-badges {
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.featured {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .badge.verified {
+            background: #4caf50;
+            color: white;
+        }
+
+        .server-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .server-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars::before {
+            content: "⭐";
+        }
+
+        .server-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #f0f2f5;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .server-installations {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .installation-type {
+            background: #667eea;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid #eee;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal-author {
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-badges {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .modal-stat {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .modal-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .modal-stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .tabs {
+            border-bottom: 2px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .installation {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .installation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .installation-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .copy-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #5a6fd8;
+        }
+
+        .copy-button.copied {
+            background: #4caf50;
+        }
+
+        .prerequisites {
+            margin-bottom: 20px;
+        }
+
+        .prerequisites h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .prerequisite-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .prerequisite {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .parameters {
+            margin-bottom: 20px;
+        }
+
+        .parameters h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .parameter {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .parameter-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .parameter-key {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #d73a49;
+        }
+
+        .parameter-description {
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .config-section h4 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .config-json {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            position: relative;
+        }
+
+        .transports {
+            margin-top: 20px;
+        }
+
+        .transports h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .transport-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .transport {
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Loading and Error States */
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .loading::before {
+            content: '⏳';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .error::before {
+            content: '❌';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .no-results::before {
+            content: '🔍';
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .controls-row {
+                flex-direction: column;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .servers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                margin: 10px;
+                max-height: 95vh;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 20px;
+            }
+
+            .tab-button {
+                padding: 12px 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🚀 MCP Registry</h1>
-        <p>Community-maintained registry of Model Context Protocol servers</p>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🚀 MCP Registry</h1>
+            <p>Community-maintained registry of Model Context Protocol servers</p>
+            <div class="header-links">
+                <a href="registry.json" target="_blank" class="header-link">📄 Raw JSON</a>
+                <a href="https://github.com/ravitemer/mcp-registry" target="_blank" class="header-link">🐙 GitHub</a>
+                <a href="https://modelcontextprotocol.io" target="_blank" class="header-link">📚 Learn MCP</a>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats" id="stats">
+            <div class="stat">
+                <span class="stat-number" id="server-count">-</span>
+                <span class="stat-label">Servers</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="category-count">-</span>
+                <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" id="stars-count">-</span>
+                <span class="stat-label">Total Stars</span>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="controls">
+            <div class="controls-row">
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="🔍 Search servers by name, description, or tags...">
+                </div>
+                <div class="filter-group">
+                    <label for="category-filter">Category:</label>
+                    <select id="category-filter">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort-filter">Sort by:</label>
+                    <select id="sort-filter">
+                        <option value="name">Name</option>
+                        <option value="stars">Stars</option>
+                        <option value="updated">Last Updated</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading" id="loading">
+            <div>Loading MCP servers...</div>
+        </div>
+
+        <!-- Error State -->
+        <div class="error" id="error" style="display: none;">
+            <div>Failed to load registry data</div>
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="no-results" style="display: none;">
+            <div>No servers found matching your criteria</div>
+        </div>
+
+        <!-- Servers Grid -->
+        <div class="servers-grid" id="servers-grid" style="display: none;">
+            <!-- Server cards will be inserted here -->
+        </div>
     </div>
 
-    <div class="endpoint">
-        <h2>Registry Endpoint</h2>
-        <pre><code>https://ravitemer.github.io/mcp-registry/registry.json</code></pre>
-        <p><a href="registry.json" target="_blank" class="link">View Raw JSON</a></p>
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <h2 class="modal-title" id="modal-title"></h2>
+                <div class="modal-author" id="modal-author"></div>
+                <div class="modal-description" id="modal-description"></div>
+                <div class="modal-badges" id="modal-badges"></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-stats" id="modal-stats"></div>
+                <div class="tabs">
+                    <div class="tab-buttons" id="tab-buttons"></div>
+                </div>
+                <div id="tab-contents"></div>
+            </div>
+        </div>
     </div>
-
-    <div class="stats" id="stats">
-        <div class="stat">
-            <div class="stat-number" id="server-count">Loading...</div>
-            <div class="stat-label">Servers</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number" id="category-count">Loading...</div>
-            <div class="stat-label">Categories</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number" id="stars-count">Loading...</div>
-            <div class="stat-label">Total Stars</div>
-        </div>
-    </div>
-
-    <div class="last-updated" id="last-updated">Loading...</div>
-
-    <h2>Usage</h2>
-    <p>Add this registry to your MCP client or hub:</p>
-    <pre><code>curl -s https://ravitemer.github.io/mcp-registry/registry.json</code></pre>
-
-    <h2>Contributing</h2>
-    <p>Want to add your MCP server? Check out our <a href="https://github.com/ravitemer/mcp-registry" target="_blank" class="link">GitHub repository</a> for contribution guidelines.</p>
 
     <script>
-        fetch('registry.json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('server-count').textContent = data.totalServers;
-                const categories = [...new Set(data.servers.map(s => s.category))];
-                document.getElementById('category-count').textContent = categories.length;
-                const totalStars = data.servers.reduce((sum, s) => sum + (s.stars || 0), 0);
-                document.getElementById('stars-count').textContent = totalStars;
-                const lastUpdated = new Date(data.generatedAt * 1000).toLocaleString();
-                document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated}`;
-            })
-            .catch(error => {
-                document.getElementById('server-count').textContent = 'Error';
-                document.getElementById('category-count').textContent = 'Error';
-                document.getElementById('stars-count').textContent = 'Error';
-                document.getElementById('last-updated').textContent = 'Error loading data';
+        let registryData = null;
+        let filteredServers = [];
+        let currentSort = 'name';
+
+        // Initialize the application
+        async function init() {
+            try {
+                const response = await fetch('registry.json');
+                if (!response.ok) throw new Error('Failed to fetch registry');
+                
+                registryData = await response.json();
+                
+                updateStats();
+                populateFilters();
+                renderServers();
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('servers-grid').style.display = 'grid';
+                
+            } catch (error) {
+                console.error('Error loading registry:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            const totalServers = registryData.totalServers;
+            const categories = [...new Set(registryData.servers.map(s => s.category))];
+            const totalStars = registryData.servers.reduce((sum, s) => sum + (s.stars || 0), 0);
+            
+            document.getElementById('server-count').textContent = totalServers;
+            document.getElementById('category-count').textContent = categories.length;
+            document.getElementById('stars-count').textContent = totalStars.toLocaleString();
+        }
+
+        // Populate filter dropdowns
+        function populateFilters() {
+            const categories = [...new Set(registryData.servers.map(s => s.category))].sort();
+            const categoryFilter = document.getElementById('category-filter');
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                categoryFilter.appendChild(option);
             });
+        }
+
+        // Filter and sort servers
+        function filterAndSortServers() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const categoryFilter = document.getElementById('category-filter').value;
+            const sortFilter = document.getElementById('sort-filter').value;
+            
+            // Filter
+            filteredServers = registryData.servers.filter(server => {
+                const matchesSearch = !searchTerm || 
+                    server.name.toLowerCase().includes(searchTerm) ||
+                    server.description.toLowerCase().includes(searchTerm) ||
+                    server.author.toLowerCase().includes(searchTerm) ||
+                    server.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                    
+                const matchesCategory = !categoryFilter || server.category === categoryFilter;
+                
+                return matchesSearch && matchesCategory;
+            });
+            
+            // Sort
+            filteredServers.sort((a, b) => {
+                switch (sortFilter) {
+                    case 'stars':
+                        return (b.stars || 0) - (a.stars || 0);
+                    case 'updated':
+                        return (b.lastCommit || 0) - (a.lastCommit || 0);
+                    case 'name':
+                    default:
+                        return a.name.localeCompare(b.name);
+                }
+            });
+            
+            currentSort = sortFilter;
+        }
+
+        // Render server cards
+        function renderServers() {
+            filterAndSortServers();
+            
+            const grid = document.getElementById('servers-grid');
+            const noResults = document.getElementById('no-results');
+            
+            if (filteredServers.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = filteredServers.map(server => createServerCard(server)).join('');
+        }
+
+        // Create server card HTML
+        function createServerCard(server) {
+            const installations = server.installations.map(inst => inst.name).join(', ');
+            const lastCommit = server.lastCommit ? 
+                new Date(server.lastCommit * 1000).toLocaleDateString() : 'Unknown';
+            
+            return `
+                <div class="server-card" onclick="openModal('${server.id}')">
+                    <div class="server-header">
+                        <div>
+                            <div class="server-title">${escapeHtml(server.name)}</div>
+                            <div class="server-author">by ${escapeHtml(server.author)}</div>
+                        </div>
+                        <div class="server-badges">
+                            ${server.featured ? '<span class="badge featured">Featured</span>' : ''}
+                            ${server.verified ? '<span class="badge verified">Verified</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="server-description">${escapeHtml(server.description)}</div>
+                    <div class="server-stats">
+                        <div class="stars">${(server.stars || 0).toLocaleString()}</div>
+                        <div>Updated: ${lastCommit}</div>
+                    </div>
+                    <div class="server-tags">
+                        ${server.tags.slice(0, 4).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
+                        ${server.tags.length > 4 ? `<span class="tag">+${server.tags.length - 4} more</span>` : ''}
+                    </div>
+                    <div class="server-installations">
+                        ${server.installations.map(inst => `<span class="installation-type">${escapeHtml(inst.name)}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Open server details modal
+        function openModal(serverId) {
+            const server = registryData.servers.find(s => s.id === serverId);
+            if (!server) return;
+            
+            // Populate modal header
+            document.getElementById('modal-title').textContent = server.name;
+            document.getElementById('modal-author').textContent = `by ${server.author}`;
+            document.getElementById('modal-description').textContent = server.description;
+            
+            // Badges
+            const badges = document.getElementById('modal-badges');
+            badges.innerHTML = '';
+            if (server.featured) {
+                badges.innerHTML += '<span class="badge featured">Featured</span>';
+            }
+            if (server.verified) {
+                badges.innerHTML += '<span class="badge verified">Verified</span>';
+            }
+            
+            // Stats
+            const lastCommit = server.lastCommit ? 
+                new Date(server.lastCommit * 1000).toLocaleDateString() : 'Unknown';
+            document.getElementById('modal-stats').innerHTML = `
+                <div class="modal-stat">
+                    <div class="modal-stat-value">${(server.stars || 0).toLocaleString()}</div>
+                    <div class="modal-stat-label">GitHub Stars</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value">${server.installations.length}</div>
+                    <div class="modal-stat-label">Installation Methods</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value">${lastCommit}</div>
+                    <div class="modal-stat-label">Last Updated</div>
+                </div>
+                <div class="modal-stat">
+                    <div class="modal-stat-value">${server.category}</div>
+                    <div class="modal-stat-label">Category</div>
+                </div>
+            `;
+            
+            // Tabs
+            const tabButtons = document.getElementById('tab-buttons');
+            const tabContents = document.getElementById('tab-contents');
+            
+            tabButtons.innerHTML = server.installations.map((inst, index) => 
+                `<button class="tab-button ${index === 0 ? 'active' : ''}" onclick="switchTab(${index})">${escapeHtml(inst.name)}</button>`
+            ).join('');
+            
+            tabContents.innerHTML = server.installations.map((inst, index) => 
+                createInstallationTab(inst, index === 0)
+            ).join('');
+            
+            // Show modal
+            document.getElementById('modal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Create installation tab content
+        function createInstallationTab(installation, isActive) {
+            const prerequisites = installation.prerequisites || [];
+            const parameters = installation.parameters || [];
+            const transports = installation.transports || [];
+            
+            return `
+                <div class="tab-content ${isActive ? 'active' : ''}">
+                    <div class="installation">
+                        <div class="installation-header">
+                            <div class="installation-name">${escapeHtml(installation.name)} Installation</div>
+                            <button class="copy-button" onclick="copyConfig(this, '${escapeHtml(installation.config)}')">
+                                📋 Copy Config
+                            </button>
+                        </div>
+                        
+                        ${installation.description ? `<p style="margin-bottom: 20px; color: #666;">${escapeHtml(installation.description)}</p>` : ''}
+                        
+                        ${prerequisites.length > 0 ? `
+                            <div class="prerequisites">
+                                <h4>📋 Prerequisites</h4>
+                                <div class="prerequisite-list">
+                                    ${prerequisites.map(req => `<span class="prerequisite">${escapeHtml(req)}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${parameters.length > 0 ? `
+                            <div class="parameters">
+                                <h4>⚙️ Parameters</h4>
+                                ${parameters.map(param => `
+                                    <div class="parameter">
+                                        <div class="parameter-name">
+                                            ${escapeHtml(param.name)}
+                                            ${param.required === false ? ' <em>(optional)</em>' : ' <em>(required)</em>'}
+                                        </div>
+                                        <div>Key: <span class="parameter-key">\${${param.key}}</span></div>
+                                        ${param.placeholder ? `<div style="color: #888; font-size: 0.9rem; margin-top: 5px;">Example: ${escapeHtml(param.placeholder)}</div>` : ''}
+                                        ${param.description ? `<div class="parameter-description">${escapeHtml(param.description)}</div>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                        
+                        <div class="config-section">
+                            <h4>🔧 Configuration</h4>
+                            <div class="config-json">${escapeHtml(JSON.stringify(JSON.parse(installation.config), null, 2))}</div>
+                        </div>
+                        
+                        ${transports.length > 0 ? `
+                            <div class="transports">
+                                <h4>🔌 Supported Transports</h4>
+                                <div class="transport-list">
+                                    ${transports.map(transport => `<span class="transport">${escapeHtml(transport)}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Switch between tabs
+        function switchTab(index) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-button').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+            
+            // Update tab contents
+            document.querySelectorAll('.tab-content').forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('modal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        // Copy configuration to clipboard
+        async function copyConfig(button, config) {
+            try {
+                await navigator.clipboard.writeText(config);
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                button.textContent = '❌ Failed';
+                setTimeout(() => {
+                    button.textContent = '📋 Copy Config';
+                }, 2000);
+            }
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Event listeners
+        document.getElementById('search').addEventListener('input', renderServers);
+        document.getElementById('category-filter').addEventListener('change', renderServers);
+        document.getElementById('sort-filter').addEventListener('change', renderServers);
+
+        // Close modal on outside click
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal();
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize the application
+        init();
     </script>
 </body>
 </html>
