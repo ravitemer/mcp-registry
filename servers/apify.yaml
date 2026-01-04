@@ -5,7 +5,7 @@ description: >-
   actors, providing access to tools for data extraction, web searching, social
   media analysis, and more.
 author: apify
-url: https://github.com/apify/actors-mcp-server
+url: https://github.com/apify/apify-mcp-server
 category: web-scraping
 tags:
   - web-scraping
