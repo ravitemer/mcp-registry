@@ -1,176 +1,176 @@
 {
   "version": "1.0.0",
-  "lastUpdated": 1769495748,
+  "lastUpdated": 1769582202,
   "servers": {
     "filesystem": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "github": {
-      "stars": 26343,
-      "lastCommit": 1769471858,
-      "updatedAt": 1769495748
+      "stars": 26390,
+      "lastCommit": 1769558816,
+      "updatedAt": 1769582202
     },
     "context7": {
-      "stars": 43692,
-      "lastCommit": 1769453269,
-      "updatedAt": 1769495748
+      "stars": 43839,
+      "lastCommit": 1769518649,
+      "updatedAt": 1769582202
     },
     "sequentialthinking": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "apify": {
-      "stars": 726,
-      "lastCommit": 1769425389,
-      "updatedAt": 1769495748
+      "stars": 729,
+      "lastCommit": 1769554405,
+      "updatedAt": 1769582202
     },
     "aws_kb_retrieval_server": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "brave_search": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "browserbase": {
-      "stars": 3092,
+      "stars": 3095,
       "lastCommit": 1769210676,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "git": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "gitlab": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "memory": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "postgres": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "puppeteer": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "redis": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "sentry": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "slack": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "sqlite": {
-      "stars": 208,
+      "stars": 209,
       "lastCommit": 1748455032,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "stripe": {
-      "stars": 1225,
-      "lastCommit": 1769450229,
-      "updatedAt": 1769495748
+      "stars": 1230,
+      "lastCommit": 1769541476,
+      "updatedAt": 1769582202
     },
     "tavily": {
-      "stars": 1125,
+      "stars": 1127,
       "lastCommit": 1769462693,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "time": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "esignatures": {
       "stars": 33,
       "lastCommit": 1759303581,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "riza": {
       "stars": 12,
       "lastCommit": 1734466929,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "fetch": {
-      "stars": 77272,
-      "lastCommit": 1769488781,
-      "updatedAt": 1769495748
+      "stars": 77375,
+      "lastCommit": 1769554987,
+      "updatedAt": 1769582202
     },
     "vapi": {
       "stars": 33,
-      "lastCommit": 1769494687,
-      "updatedAt": 1769495748
+      "lastCommit": 1769574947,
+      "updatedAt": 1769582202
     },
     "browser_tools": {
-      "stars": 7025,
+      "stars": 7026,
       "lastCommit": 1742992814,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "figma": {
-      "stars": 12748,
+      "stars": 12848,
       "lastCommit": 1768928297,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "firecrawl": {
-      "stars": 5345,
+      "stars": 5352,
       "lastCommit": 1768948462,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "perplexity": {
       "stars": 279,
       "lastCommit": 1743096750,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "playwright": {
-      "stars": 26252,
-      "lastCommit": 1769468125,
-      "updatedAt": 1769495748
+      "stars": 26309,
+      "lastCommit": 1769543008,
+      "updatedAt": 1769582202
     },
     "task_master": {
-      "stars": 25090,
-      "lastCommit": 1769468336,
-      "updatedAt": 1769495748
+      "stars": 25104,
+      "lastCommit": 1769539986,
+      "updatedAt": 1769582202
     },
     "aws_docs": {
-      "stars": 7968,
-      "lastCommit": 1769490819,
-      "updatedAt": 1769495748
+      "stars": 7977,
+      "lastCommit": 1769577240,
+      "updatedAt": 1769582202
     },
     "blender": {
-      "stars": 16610,
+      "stars": 16655,
       "lastCommit": 1769188804,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "magic": {
-      "stars": 4176,
+      "stars": 4181,
       "lastCommit": 1766485754,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     },
     "supabase": {
-      "stars": 816,
+      "stars": 815,
       "lastCommit": 1758895380,
-      "updatedAt": 1769495748
+      "updatedAt": 1769582202
     }
   }
 }
