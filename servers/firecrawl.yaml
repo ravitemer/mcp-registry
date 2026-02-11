@@ -3,7 +3,7 @@ name: Firecrawl MCP Server
 description: >-
   Official Firecrawl MCP Server providing advanced web scraping, crawling, batch processing, and content extraction for LLM clients like Cursor and Claude.
 author: mendableai
-url: https://github.com/mendableai/firecrawl-mcp-server
+url: https://github.com/firecrawl/firecrawl-mcp-server
 license: MIT
 category: web-scraping
 tags:
