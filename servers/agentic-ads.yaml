@@ -1,0 +1,37 @@
+id: agentic_ads
+name: Agentic Ads
+description: >-
+  Ad monetization SDK for MCP servers. Earn 70% revenue share on contextual
+  affiliate ads served through MCP tools. Like AdSense for AI agents.
+author: nicofains1
+url: https://github.com/nicofains1/agentic-ads
+license: MIT
+category: marketing
+tags:
+  - advertising
+  - monetization
+  - affiliate
+  - mcp-sdk
+installations:
+  - name: Remote
+    description: Connect to the hosted MCP endpoint
+    config: |-
+      {
+        "url": "https://agentic-ads-production.up.railway.app/mcp",
+        "transport": "http"
+      }
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Run locally via npx
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "agentic-ads"]
+      }
+    prerequisites:
+      - Node.js >= 22
+    transports:
+      - stdio
+featured: false
+verified: false
