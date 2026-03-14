@@ -5,7 +5,7 @@ description: >-
   customer management, payment processing, product creation, and invoice
   handling through function calling.
 author: stripe
-url: https://github.com/stripe/agent-toolkit
+url: https://github.com/stripe/ai
 category: payments
 tags:
   - payments
