@@ -1,0 +1,38 @@
+id: bgpt
+name: BGPT MCP
+description: >-
+  Search BGPT's database of scientific papers built from raw experimental data
+  extracted from full-text studies. 50 free searches per network, no API key needed.
+author: connerlambden
+url: https://github.com/connerlambden/bgpt-mcp
+license: MIT
+category: research
+tags:
+  - scientific-papers
+  - research
+  - experimental-data
+  - full-text-search
+  - literature-search
+installations:
+  - name: Remote (SSE)
+    description: Connect via Server-Sent Events. No API key required for 50 free searches.
+    config: |-
+      {
+        "type": "sse",
+        "url": "https://bgpt.pro/mcp/sse"
+      }
+    prerequisites: []
+    transports:
+      - sse
+  - name: Remote (Streamable HTTP)
+    description: Connect via Streamable HTTP. No API key required for 50 free searches.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://bgpt.pro/mcp/stream"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
