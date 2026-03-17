@@ -1,0 +1,38 @@
+id: commune-mcp
+name: Commune MCP
+description: >-
+  Email infrastructure for AI agents. Provision inboxes programmatically,
+  send and receive email, manage threads across concurrent conversations,
+  use custom sending domains, handle attachments, run structured extraction
+  on inbound mail, and send/receive SMS — all from a single MCP server.
+author: commune-sh
+url: https://github.com/commune-sh/commune-mcp
+category: communication
+tags:
+  - email
+  - agent-email
+  - inbox
+  - sms
+  - structured-extraction
+  - communication
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["commune-mcp"],
+        "env": {
+          "COMMUNE_API_KEY": "${COMMUNE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Python 3.10+
+      - uv (https://docs.astral.sh/uv/)
+    parameters:
+      - name: Commune API Key
+        key: COMMUNE_API_KEY
+        placeholder: comm_your_api_key_here
+    transports:
+      - stdio
+featured: false
+verified: false
