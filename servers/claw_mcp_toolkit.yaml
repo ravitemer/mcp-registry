@@ -1,0 +1,42 @@
+id: claw_mcp_toolkit
+name: Claw MCP Toolkit
+description: >-
+  All-in-one MCP server with 26 tools across 5 modules: Crypto prices and market
+  data, Web tools (fetch, DNS, SSL, SEO), Social media content generation,
+  Finance (stocks, forex, portfolio), and Productivity (pomodoro, tasks, notes).
+  Zero config, zero API keys required.
+author: ElromEvedElElyon
+url: https://github.com/ElromEvedElElyon/claw-mcp-toolkit
+category: productivity
+tags:
+  - crypto
+  - finance
+  - web-tools
+  - social-media
+  - productivity
+  - all-in-one
+  - toolkit
+installations:
+  - name: NPX from GitHub
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "github:ElromEvedElElyon/claw-mcp-toolkit"]
+      }
+    prerequisites:
+      - Node.js
+    parameters: []
+    transports:
+      - stdio
+  - name: Global Install
+    config: |-
+      {
+        "command": "claw-mcp-toolkit"
+      }
+    prerequisites:
+      - Node.js
+    parameters: []
+    transports:
+      - stdio
+featured: false
+verified: false
