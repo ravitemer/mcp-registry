@@ -1,0 +1,49 @@
+id: a2abench
+name: A2ABench
+description: >-
+  Agent-native developer Q&A MCP server with searchable threads, citation URLs,
+  and optional write tools for posting questions and answers.
+author: A2ABench
+url: https://github.com/khalidsaidi/a2abench
+license: MIT
+category: development
+tags:
+  - a2a
+  - mcp
+  - developer-tools
+  - question-answering
+  - citations
+installations:
+  - name: Remote
+    description: Connect directly to A2ABench hosted MCP endpoint.
+    config: |-
+      {
+        "url": "https://a2abench-mcp.web.app/mcp"
+      }
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Run local stdio MCP server via npm package.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@khalidsaidi/a2abench-mcp@latest", "a2abench-mcp"],
+        "env": {
+          "API_BASE_URL": "https://a2abench-api.web.app",
+          "PUBLIC_BASE_URL": "https://a2abench-api.web.app",
+          "API_KEY": "${A2ABENCH_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+      - npm
+    parameters:
+      - name: A2ABench API Key
+        key: A2ABENCH_API_KEY
+        description: Optional for read-only tools; required for create_question/create_answer.
+        placeholder: a2ab_xxxxxxxxxxxxx
+        required: false
+    transports:
+      - stdio
+featured: false
+verified: false
