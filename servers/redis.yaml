@@ -4,7 +4,7 @@ description: >-
   Provides access to Redis key-value stores, enabling operations like setting,
   getting, deleting, and listing keys with optional expiration time support.
 author: modelcontextprotocol
-url: https://github.com/modelcontextprotocol/servers/tree/main/src/redis
+url: https://github.com/modelcontextprotocol/servers-archived/tree/main/src/redis
 category: database-management
 tags:
   - redis
