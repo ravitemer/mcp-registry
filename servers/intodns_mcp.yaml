@@ -1,0 +1,33 @@
+id: intodns_mcp
+name: IntoDNS.ai MCP
+description: >-
+  DNS and email security scanner for AI agents with SPF, DKIM, DMARC, DNSSEC,
+  BIMI, STARTTLS, FCrDNS, blacklists, reports, and citations.
+author: Cobytes
+url: https://github.com/RoscoNL/intodns-mcp-server
+license: MIT
+category: security
+tags:
+  - dns
+  - email-security
+  - deliverability
+  - dmarc
+  - dnssec
+  - bimi
+  - blacklist
+  - security-scanner
+  - citations
+installations:
+  - name: NPX
+    description: Run the IntoDNS.ai MCP server with no API key or signup.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "intodns-mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
