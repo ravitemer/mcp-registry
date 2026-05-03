@@ -53,7 +53,7 @@ Each server is defined in a YAML file in the `servers/` directory with the follo
 # Basic Information
 id: server_name                    # Unique identifier (alphanumeric + underscore, min 3 chars)
 name: Display Name                 # Human-readable name
-description: Brief description under 200 characters
+description: Brief description under 400 characters
 author: Author Name               # Author or organization
 url: https://github.com/author/repo # Documentation or repository URL
 license: MIT                      # Software license (optional)
@@ -116,7 +116,7 @@ export const InstallationSchema = z.object({
 export const ServerSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
-  description: z.string().min(1).max(200),
+  description: z.string().min(1).max(400),
   author: z.string(),
   url: z.string().url(),
   license: z.string().optional(),
@@ -237,7 +237,7 @@ If any of these checks fail, your PR will be marked as failing and you will see 
 
 ## Best Practices
 
-- **Clear Descriptions**: Write concise, informative descriptions under 200 characters
+- **Clear Descriptions**: Write concise, informative descriptions under 400 characters
 - **Comprehensive Tags**: Use relevant tags to make your server discoverable
 - **Multiple Installation Methods**: Provide options for different environments when possible
 - **Accurate Prerequisites**: List all system requirements clearly
