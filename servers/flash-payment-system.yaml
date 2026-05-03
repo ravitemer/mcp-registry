@@ -1,0 +1,35 @@
+id: flash_payment_system
+name: Flash Payment System (bUSD1 Runes MCP)
+description: >-
+  First write-capable Bitcoin Runes MCP server. 12 tools to mint, transfer,
+  batch-mint, and list BITCOIN•USD•ONE Runes. bUSD1 USD stablecoin backed 1:1
+  by Runes on Bitcoin Layer 1 with Chainlink Proof of Reserves. Agent swarm
+  coordination and x402 agent-to-agent payments. 99 tests passing.
+author: ElromEvedElElyon
+url: https://github.com/ElromEvedElElyon/flash-payment-system
+category: crypto
+tags:
+  - bitcoin
+  - runes
+  - stablecoin
+  - chainlink
+  - proof-of-reserves
+  - x402
+  - agent-payments
+  - defi
+  - btcfi
+  - ordinals
+installations:
+  - name: Git Clone
+    config: |-
+      {
+        "command": "node",
+        "args": ["dist/src/mcp/server-entry.js"]
+      }
+    prerequisites:
+      - Node.js
+      - Git
+    transports:
+      - stdio
+featured: false
+verified: false
