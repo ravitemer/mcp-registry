@@ -1,4 +1,4 @@
-id: commune-mcp
+id: commune_mcp
 name: Commune MCP
 description: >-
   Email infrastructure for AI agents. Provision inboxes programmatically,
