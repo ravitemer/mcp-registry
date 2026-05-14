@@ -33,7 +33,7 @@ installations:
     parameters:
       - name: Xquik API Key
         key: XQUIK_API_KEY
-        description: API key from https://dashboard.xquik.com/account
+        description: API key from https://dashboard.xquik.com/en/account
         placeholder: your_xquik_api_key
     transports:
       - streamable-http
