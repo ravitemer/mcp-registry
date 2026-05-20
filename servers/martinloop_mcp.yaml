@@ -1,0 +1,29 @@
+id: martinloop_mcp
+name: MartinLoop MCP
+description: >-
+  Governed MCP server for AI coding agents with budgets, verifier gates, and
+  inspectable runs.
+author: Vakeesan Mahalingam and Gobi Shanthan
+url: https://github.com/Keesan12/martin-loop
+license: Apache-2.0
+category: development
+tags:
+  - development
+  - governance
+  - verification
+  - ai-agents
+  - coding
+installations:
+  - name: NPX
+    description: Run the published MartinLoop MCP package with npx.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@martinloop/mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
