@@ -1,0 +1,26 @@
+id: packrift
+name: Packrift
+description: Public MCP server for Packrift packaging-supplies catalog lookup and ecommerce packaging workflow resources.
+author: Packrift
+url: https://github.com/Packrift/packrift-mcp
+license: MIT
+category: ecommerce
+tags:
+  - packaging
+  - ecommerce
+  - catalog
+  - shipping
+  - supplies
+installations:
+  - name: Remote HTTP
+    description: Connect directly to the public Packrift MCP endpoint.
+    config: |-
+      {
+        "url": "https://mcp.packrift.com/mcp"
+      }
+    prerequisites:
+      - Internet access
+    transports:
+      - streamable-http
+featured: false
+verified: false
