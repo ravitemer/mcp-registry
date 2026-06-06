@@ -5,7 +5,7 @@ description: >-
   Provides free preflight trust checks and paid cryptographically signed V5 trust receipts
   via the x402 micropayment protocol. Streamable-HTTP transport.
 author: twzrd-sol
-url: https://github.com/twzrd-sol/wzrd-final
+url: https://intel.twzrd.xyz
 category: blockchain
 tags:
   - solana
