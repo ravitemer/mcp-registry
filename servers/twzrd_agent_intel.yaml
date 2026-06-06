@@ -1,0 +1,30 @@
+id: twzrd_agent_intel
+name: TWZRD Agent Intel
+description: >-
+  Solana-native trust scoring and x402 receipt verification MCP server for AI agents.
+  Provides free preflight trust checks and paid cryptographically signed V5 trust receipts
+  via the x402 micropayment protocol. Streamable-HTTP transport.
+author: twzrd-sol
+url: https://github.com/twzrd-sol/wzrd-final
+category: blockchain
+tags:
+  - solana
+  - trust
+  - x402
+  - micropayments
+  - ai-agents
+  - receipts
+  - identity
+  - web3
+installations:
+  - name: Streamable-HTTP (Remote)
+    description: Connect directly to the hosted TWZRD Agent Intel MCP endpoint
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://intel.twzrd.xyz/mcp"
+      }
+    transports:
+      - streamable-http
+featured: false
+verified: false
