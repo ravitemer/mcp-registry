@@ -1,0 +1,41 @@
+id: xquik
+name: Xquik MCP
+description: >-
+  X/Twitter data platform with 100+ REST endpoints, 2 MCP tools, webhooks,
+  official SDKs, tweet search, user lookup, monitoring, and confirmation-gated
+  writes.
+author: Xquik-dev
+url: https://github.com/Xquik-dev/x-twitter-scraper
+license: MIT
+category: social-media
+tags:
+  - twitter
+  - x
+  - tweet-search
+  - social-media
+  - data-extraction
+  - monitoring
+  - webhooks
+  - sdk
+installations:
+  - name: Remote
+    description: Connect to the hosted Xquik MCP endpoint with an Xquik API key.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://xquik.com/mcp",
+        "headers": {
+          "x-api-key": "${XQUIK_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Xquik API key
+    parameters:
+      - name: Xquik API Key
+        key: XQUIK_API_KEY
+        description: API key from https://dashboard.xquik.com/en/account
+        placeholder: your_xquik_api_key
+    transports:
+      - streamable-http
+featured: false
+verified: false
