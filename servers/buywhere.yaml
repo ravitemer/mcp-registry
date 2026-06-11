@@ -1,0 +1,55 @@
+id: buywhere
+name: BuyWhere
+description: >-
+  Real-time product search and price comparison MCP server. Search and compare
+  260K+ products across 1,000+ merchants in Southeast Asia — Singapore, Malaysia,
+  Philippines, Thailand, and Indonesia. Built for AI agents doing price research,
+  deal discovery, and product availability checks.
+author: BuyWhere
+url: https://github.com/BuyWhere/buywhere-mcp
+category: ecommerce
+tags:
+  - ecommerce
+  - shopping
+  - price-comparison
+  - product-search
+  - southeast-asia
+  - singapore
+  - lazada
+  - shopee
+  - remote
+installations:
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@buywhere/mcp-server"],
+        "env": {
+          "BUYWHERE_API_KEY": "${BUYWHERE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+    parameters:
+      - name: BuyWhere API Key
+        key: BUYWHERE_API_KEY
+        placeholder: bw_xxxxxxxxxxxxxxxxxxxxxxxx
+    transports:
+      - stdio
+  - name: Remote (Streamable HTTP)
+    config: |-
+      {
+        "url": "https://mcp.buywhere.ai/mcp",
+        "headers": {
+          "Authorization": "Bearer ${BUYWHERE_API_KEY}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: BuyWhere API Key
+        key: BUYWHERE_API_KEY
+        placeholder: bw_xxxxxxxxxxxxxxxxxxxxxxxx
+    transports:
+      - streamable-http
+featured: false
+verified: false
