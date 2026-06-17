@@ -1,0 +1,58 @@
+id: latlng
+name: LatLng
+description: >-
+  Official LatLng MCP server for geocoding, reverse geocoding, places search,
+  nearby places, and place categories powered by OpenStreetMap data.
+author: latlng-work
+url: https://www.latlng.work/mcp
+category: location
+tags:
+  - geocoding
+  - reverse-geocoding
+  - places
+  - maps
+  - openstreetmap
+  - location-api
+  - geospatial
+installations:
+  - name: Remote
+    description: Connect directly to the hosted LatLng MCP endpoint.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.latlng.work/mcp",
+        "headers": {
+          "Authorization": "Bearer ${LATLNG_SERVER_KEY}"
+        }
+      }
+    prerequisites:
+      - LatLng Server Key
+    parameters:
+      - name: LatLng Server Key
+        key: LATLNG_SERVER_KEY
+        placeholder: latlng_your_server_key_here
+        required: true
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Run the LatLng MCP server locally with Node.js.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@latlng/mcp-server"],
+        "env": {
+          "LATLNG_SERVER_KEY": "${LATLNG_SERVER_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js
+      - LatLng Server Key
+    parameters:
+      - name: LatLng Server Key
+        key: LATLNG_SERVER_KEY
+        placeholder: latlng_your_server_key_here
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
