@@ -1,0 +1,33 @@
+id: agentage_memory
+name: agentage Memory
+description: >-
+  One memory. Every AI. Owned by you. A shared markdown memory layer that Claude,
+  Cursor, and ChatGPT read and write through MCP, mirrored locally as plain .md
+  files you own and can export anytime. Search, read, write, edit, list, and
+  delete memories across every AI client.
+author: agentage
+url: https://memory.agentage.io
+license: Proprietary
+category: knowledge-graph
+tags:
+  - memory
+  - persistent-memory
+  - knowledge-management
+  - markdown
+  - cross-vendor
+  - oauth
+  - remote
+installations:
+  - name: Remote
+    description: Hosted MCP server with OAuth 2.1 + PKCE (Dynamic Client Registration)
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://memory.agentage.io/mcp"
+      }
+    prerequisites:
+      - agentage account
+    transports:
+      - streamable-http
+featured: false
+verified: false
