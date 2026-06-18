@@ -1,5 +1,5 @@
 id: agentage_memory
-name: agentage Memory
+name: Agentage Memory
 description: >-
   One memory. Every AI. Owned by you. A shared markdown memory layer that Claude,
   Cursor, and ChatGPT read and write through MCP, mirrored locally as plain .md
