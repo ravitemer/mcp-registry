@@ -1,9 +1,9 @@
 id: xquik
 name: Xquik
 description: >-
-  Remote MCP server for Xquik's X data platform, with structured access to tweet
-  search, user lookup, follower extraction, monitoring, webhooks, giveaway draws,
-  and confirmation-gated write actions.
+  Hosted X data workflows with 118 MCP operations through 2 tools for search,
+  profiles, followers, media, monitors, webhooks, draws, and supported account
+  actions. Not affiliated with X Corp.
 author: Xquik
 url: https://github.com/Xquik-dev/x-twitter-scraper
 license: MIT
@@ -23,7 +23,7 @@ installations:
         "type": "streamable-http",
         "url": "https://xquik.com/mcp",
         "headers": {
-          "x-api-key": "${XQUIK_API_KEY}"
+          "Authorization": "Bearer ${XQUIK_API_KEY}"
         }
       }
     prerequisites:
