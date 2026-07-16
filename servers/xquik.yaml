@@ -1,0 +1,41 @@
+id: xquik
+name: Xquik
+description: >-
+  Hosted X data workflows with 118 MCP operations through 2 tools for search,
+  profiles, followers, media, monitors, webhooks, draws, and supported account
+  actions. Not affiliated with X Corp.
+author: Xquik
+url: https://github.com/Xquik-dev/x-twitter-scraper
+license: MIT
+category: social-media
+tags:
+  - x
+  - twitter
+  - social-media
+  - data-extraction
+  - monitoring
+  - webhooks
+  - automation
+installations:
+  - name: Remote
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://xquik.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${XQUIK_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Xquik account
+      - Xquik API key
+    parameters:
+      - name: Xquik API Key
+        key: XQUIK_API_KEY
+        description: API key from the Xquik dashboard account page
+        placeholder: xq_your_api_key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
