@@ -1,0 +1,31 @@
+id: notfair
+name: NotFair Google Ads MCP
+description: >-
+  Google Ads MCP server. Connects Claude and AI agents to a Google Ads account:
+  diagnose campaign performance (CPA, ROAS, search-term waste, quality scores),
+  recommend optimizations, and execute approved changes via the Google Ads API
+  with a built-in human-approval gate. Free tier available.
+author: nowork-studio
+url: https://github.com/nowork-studio/toprank
+license: Proprietary
+category: marketing
+tags:
+  - google-ads
+  - advertising
+  - marketing
+  - ppc
+  - campaign-management
+  - paid-search
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Hosted streamable-HTTP MCP server. Sign in at notfair.co to authorize a Google Ads account.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://notfair.co/api/mcp/google_ads"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
