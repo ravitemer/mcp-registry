@@ -1,0 +1,30 @@
+id: vestige
+name: Vestige
+description: >-
+  Local-first cognitive memory MCP server for coding agents, with SQLite
+  storage, FSRS-style retention, hybrid retrieval, provenance/correction tools,
+  and a dashboard.
+author: samvallad33
+url: https://github.com/samvallad33/vestige
+license: AGPL-3.0
+category: knowledge-graph
+tags:
+  - cognitive-memory
+  - persistent-memory
+  - coding-agents
+  - sqlite
+  - provenance
+installations:
+  - name: NPX
+    description: Run the Vestige MCP server from npm
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "--package", "vestige-mcp-server", "vestige-mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
