@@ -1,0 +1,25 @@
+id: nika
+name: Nika
+description: >-
+  Read-only oracle for the Nika AI workflow engine. Agents validate
+  .nika.yaml workflow DAGs, get findings explained with fix guidance, browse
+  examples and schema, and see an honest cost estimate — all before a single
+  token is spent. No execution and no mutation over MCP by design.
+author: supernovae-st
+url: https://github.com/supernovae-st/nika
+category: development
+tags:
+  - workflow
+  - yaml
+  - validation
+  - cost-estimation
+  - rust
+installations:
+  - name: Binary (brew or release tarball)
+    config: |-
+      {
+        "command": "nika",
+        "args": ["mcp"]
+      }
+    prerequisites:
+      - nika binary (brew install supernovae-st/tap/nika)
