@@ -1,0 +1,30 @@
+id: sandbase_cli
+name: SandBase CLI
+description: >-
+  Secure local stdio MCP bridge for AI clients to discover, inspect, and run
+  models and APIs from a catalog of 2,000+ AI models.
+author: SandBase
+url: https://github.com/sandbaseai/cli
+license: Apache-2.0
+category: developer-tools
+tags:
+  - model-routing
+  - ai-gateway
+  - cli
+  - model-context-protocol
+  - local-first
+installations:
+  - name: NPX
+    description: Install the SandBase CLI globally, then authorize and configure an MCP client.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@sandbaseai/cli", "connect"]
+      }
+    prerequisites:
+      - Node.js
+      - Run `sandbase connect` (or the equivalent npx command) to authorize the local bridge.
+    transports:
+      - stdio
+featured: false
+verified: false
