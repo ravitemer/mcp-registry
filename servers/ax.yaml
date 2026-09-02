@@ -1,0 +1,31 @@
+id: ax_mcp
+name: ax
+description: >-
+  Exposes read-only MCP queries over local AI coding-agent sessions, tool calls,
+  skills, costs, and dispatches.
+author: Necmttn
+url: https://github.com/Necmttn/ax
+license: MIT
+category: development
+tags:
+  - ai-coding
+  - agent-observability
+  - telemetry
+  - cost-tracking
+  - session-recall
+  - mcp-server
+installations:
+  - name: Source checkout
+    description: Run ax MCP from a local source checkout
+    config: |-
+      {
+        "command": "apps/axctl/bin/axctl",
+        "args": ["mcp"]
+      }
+    prerequisites:
+      - Bun
+      - ax source checkout
+    transports:
+      - stdio
+featured: false
+verified: false
