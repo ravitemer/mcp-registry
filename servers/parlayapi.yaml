@@ -1,0 +1,49 @@
+id: parlayapi
+name: ParlayAPI
+description: Sports odds, player props, public discovery and account usage for private workflows. Use your own account key for account tools; allowances and API terms apply. Signup, login-email, checkout-link and preference tools require explicit approval. Software sharing does not grant data distribution rights.
+author: JacobiusMakes
+url: https://github.com/JacobiusMakes/parlay-api-mcp
+license: MIT
+category: data
+tags:
+  - sports
+  - odds
+  - python
+installations:
+  - name: UVX - public discovery
+    description: Start without an account key for public discovery and tool metadata. Account tools require your own key.
+    config: |
+      {
+        "command": "uvx",
+        "args": ["--from", "parlayapi-mcp==0.3.5", "parlayapi-mcp"],
+        "env": {"PARLAYAPI_BASE_URL": "https://parlay-api.com"}
+      }
+    prerequisites:
+      - uv (provides uvx)
+      - Python 3.10 or newer
+    transports:
+      - stdio
+  - name: UVX - your account
+    description: Set PARLAYAPI_KEY in your environment before starting Neovim and keep the variable placeholder in the JSON editor. Account allowances apply.
+    config: |
+      {
+        "command": "uvx",
+        "args": ["--from", "parlayapi-mcp==0.3.5", "parlayapi-mcp"],
+        "env": {
+          "PARLAYAPI_BASE_URL": "https://parlay-api.com",
+          "PARLAYAPI_KEY": "${PARLAYAPI_KEY}"
+        }
+      }
+    prerequisites:
+      - uv (provides uvx)
+      - Python 3.10 or newer
+      - Your own ParlayAPI account key
+    parameters:
+      - name: Your ParlayAPI account key
+        key: PARLAYAPI_KEY
+        description: Your own key from https://parlay-api.com/dashboard. Keep the variable reference to avoid writing the key into the JSON configuration. Do not use a shared community key.
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
