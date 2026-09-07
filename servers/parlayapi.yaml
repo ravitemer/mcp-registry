@@ -15,7 +15,7 @@ installations:
     config: |
       {
         "command": "uvx",
-        "args": ["--from", "parlayapi-mcp==0.3.5", "parlayapi-mcp"],
+        "args": ["--from", "parlayapi-mcp==0.3.6", "parlayapi-mcp"],
         "env": {"PARLAYAPI_BASE_URL": "https://parlay-api.com"}
       }
     prerequisites:
@@ -28,7 +28,7 @@ installations:
     config: |
       {
         "command": "uvx",
-        "args": ["--from", "parlayapi-mcp==0.3.5", "parlayapi-mcp"],
+        "args": ["--from", "parlayapi-mcp==0.3.6", "parlayapi-mcp"],
         "env": {
           "PARLAYAPI_BASE_URL": "https://parlay-api.com",
           "PARLAYAPI_KEY": "${PARLAYAPI_KEY}"
