@@ -1,0 +1,31 @@
+id: Rube                   
+name: Rube             
+description: Rube is a MCP server that connects your AI tools to 500+ apps like Gmail, Slack, GitHub, and Notion. 
+author: Composio             
+url: https://github.com/composiohq/rube 
+license: MIT                      
+
+
+category: development            
+tags:                            
+  - integrations
+  - automations
+
+installations:
+  - name: npx
+    description: Run using NPX   
+    config: |                    
+      {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://rube.composio.dev/mcp"]
+      }
+    prerequisites: 
+      - Node.js
+    transports:                  
+      - stdio
+      - sse
+      - streamable-http
+
+# Quality Indicators
+featured: false                 # Featured/recommended server
+verified: false                 # Verified by maintainers
