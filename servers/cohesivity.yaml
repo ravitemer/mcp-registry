@@ -31,7 +31,7 @@ installations:
         "args": ["${COHESIVITY_PLUGIN_PATH}/mcp/project-bootstrap.mjs"]
       }
     prerequisites:
-      - Node.js 20 or newer
+      - Node.js 18 or newer
       - A local checkout of https://github.com/cohesivity-org/cohesivity-plugin
     parameters:
       - name: Cohesivity plugin checkout
