@@ -1,0 +1,27 @@
+id: aihawk
+name: AIHawk
+description: >-
+  AI browser agent: opens pages, clicks, types, reads text and takes screenshots on a real Firefox from plain-English instructions, driving the browser through the real pointer and keyboard
+author: feder-cr
+url: https://github.com/feder-cr/AIHawk
+license: MIT
+category: browser-automation
+tags:
+  - browser-automation
+  - browser-agent
+  - firefox
+  - web-automation
+  - computer-use
+installations:
+  - name: UVX
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["aihawk"]
+      }
+    prerequisites:
+      - python
+      - uv
+      - the browser engine, downloaded once with `uvx invisible-playwright fetch`
+    transports:
+      - stdio
