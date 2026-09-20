@@ -1,0 +1,26 @@
+id: famulor
+name: Famulor
+description: Operates AI assistants and omnichannel communication workflows, including conversation history, calls, campaigns, messaging, knowledge, and automations through Famulor's hosted MCP server.
+author: BEK Service GmbH
+url: https://github.com/bekservice/Famulor-MCP
+category: productivity
+tags:
+  - voice-ai
+  - assistants
+  - communication
+  - automation
+installations:
+  - name: Remote
+    description: Connect to Famulor's hosted MCP server using browser OAuth.
+    config: |
+      {
+        "type": "streamable-http",
+        "url": "https://app.famulor.io/mcp"
+      }
+    prerequisites:
+      - Famulor account
+      - MCP client with browser OAuth support
+    transports:
+      - streamable-http
+featured: false
+verified: false
