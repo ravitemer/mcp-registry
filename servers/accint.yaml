@@ -1,0 +1,36 @@
+id: accint
+name: AccInt
+description: >-
+  Outcome-aware MCP memory server for AI agents that retrieves past work, tracks
+  commitments, and learns from real-world feedback.
+author: maxbaluev
+url: https://github.com/maxbaluev/accreted-intelligence
+category: agent-memory
+tags:
+  - agent-memory
+  - retrieval
+  - commitments
+  - outcome-feedback
+  - mcp
+  - claude-code
+  - codex
+installations:
+  - name: Local binary
+    description: Run AccInt from a locally installed release binary.
+    config: |-
+      {
+        "command": "acc",
+        "args": ["--db", "${ACC_DB}", "mcp"]
+      }
+    prerequisites:
+      - AccInt release binary installed
+    parameters:
+      - name: AccInt Database Path
+        key: ACC_DB
+        description: Absolute path to the local AccInt database file.
+        placeholder: /absolute/path/to/acc.db
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
