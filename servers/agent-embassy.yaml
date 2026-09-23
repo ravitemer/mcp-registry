@@ -1,0 +1,27 @@
+id: agent_embassy
+name: Agent Embassy
+description: >-
+  Paid MCP API services for AI agents. Agents pay for work and prove what
+  happened.
+author: noot XLM
+url: https://agent-embassy.fly.dev
+category: developer-tools
+tags:
+  - x402
+  - payments
+  - usdc
+  - verification
+  - ai-agents
+installations:
+  - name: Remote
+    description: Connect directly to the hosted Streamable HTTP endpoint
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://agent-embassy.fly.dev/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
