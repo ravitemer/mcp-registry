@@ -1,0 +1,61 @@
+id: palisade_dmarc_agent
+name: Palisade DMARC Agent
+description: >-
+  AI-powered DMARC, SPF, DKIM, BIMI, MTA-STS, DNS, and email-authentication
+  management for AI agents.
+author: Palisade
+url: https://github.com/palisadeemail/palisade-mcp
+license: MIT
+category: security
+tags:
+  - dmarc
+  - email-authentication
+  - spf
+  - dkim
+  - bimi
+  - mta-sts
+  - dns
+  - security
+installations:
+  - name: Remote
+    description: Connect directly to the hosted Palisade MCP endpoint.
+    config: |-
+      {
+        "url": "https://api.palisade.email/mcp",
+        "headers": {
+          "Authorization": "Bearer ${PALISADE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Palisade API key
+    parameters:
+      - name: Palisade API Key
+        key: PALISADE_API_KEY
+        description: API key for the Palisade account.
+        placeholder: your_palisade_api_key
+        required: true
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Run the Palisade MCP bridge locally with Node.js.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@palisadeemail/mcp"],
+        "env": {
+          "PALISADE_API_KEY": "${PALISADE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js 18 or later
+      - Palisade API key
+    parameters:
+      - name: Palisade API Key
+        key: PALISADE_API_KEY
+        description: API key for the Palisade account.
+        placeholder: your_palisade_api_key
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
