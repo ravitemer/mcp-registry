@@ -1,0 +1,33 @@
+id: latitude
+name: Latitude
+description: >-
+  Open-source LLM observability and evaluation platform. Read and manage your
+  Latitude workspace — projects, traces, spans, issues, annotations, scores,
+  saved searches, datasets, monitors, and members — directly from your AI agent.
+author: latitude-dev
+url: https://github.com/latitude-dev/latitude-llm
+license: MIT
+category: development
+tags:
+  - observability
+  - llm
+  - tracing
+  - evaluation
+  - monitoring
+  - analytics
+installations:
+  - name: Remote
+    description: >-
+      Remote, OAuth-authenticated streamable HTTP server. On first connect your
+      agent opens a browser to sign in and pick the organization to grant access
+      to — no API key to copy or store.
+    config: |-
+      {
+        "url": "https://api.latitude.so/v1/mcp"
+      }
+    prerequisites:
+      - Latitude account (sign up at https://console.latitude.so/login, or self-host)
+    transports:
+      - streamable-http
+featured: false
+verified: false
