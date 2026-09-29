@@ -1,0 +1,32 @@
+id: process_street
+name: Process Street
+description: >-
+  Connect AI agents to Process Street workflows, tasks, runs, data sets, and
+  operational records through the official hosted MCP server.
+author: Process Street
+url: https://github.com/process-street/process-street-mcp
+category: productivity
+tags:
+  - workflow-automation
+  - business-process-management
+  - compliance
+  - operations
+  - productivity
+installations:
+  - name: Remote Streamable HTTP
+    description: >-
+      Connect to the official hosted Process Street MCP server. Supported
+      clients can use interactive authorization. Clients with custom headers
+      can use a Process Street API key as a bearer token.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.process.st/"
+      }
+    prerequisites:
+      - Compatible MCP client
+      - Process Street account or Process Street API key
+    transports:
+      - streamable-http
+featured: false
+verified: false
