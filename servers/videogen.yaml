@@ -1,0 +1,38 @@
+id: videogen
+name: VideoGen MCP
+description: Official VideoGen MCP server for creating and editing videos, images,
+  voiceovers, music, and avatars, with media uploads, project edits, and video exports.
+author: VideoGen
+url: https://videogen.io/videogen-mcp
+license: MIT
+category: media
+tags:
+- video
+- media
+- marketing
+- ecommerce
+installations:
+- name: NPX
+  description: Local stdio server. Requires a VideoGen account and API key; generation
+    uses account credits.
+  config: '{"command": "npx", "args": ["-y", "@videogen/mcp"], "env": {"VIDEOGEN_API_KEY":
+    "${VIDEOGEN_API_KEY}"}}'
+  prerequisites:
+  - Node.js 20 or later
+  - VideoGen account with API access and credits
+  parameters:
+  - name: VideoGen API key
+    key: VIDEOGEN_API_KEY
+    description: Create an API key in your VideoGen account. Do not publish it.
+    placeholder: YOUR_VIDEOGEN_API_KEY
+    required: true
+  transports:
+  - stdio
+- name: Hosted HTTP
+  description: Connect to the hosted server with an MCP client that supports OAuth.
+    Generation uses account credits.
+  config: '{"url": "https://mcp.videogen.io/mcp"}'
+  transports:
+  - streamable-http
+featured: false
+verified: false
