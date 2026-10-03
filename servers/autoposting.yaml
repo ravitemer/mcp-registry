@@ -1,0 +1,34 @@
+id: autoposting
+name: Autoposting
+description: >-
+  Hosted MCP server for social media publishing. Draft and rewrite posts,
+  generate ideas with AI agents, build carousels, clip and render video, search
+  a knowledge base, manage brands and webhooks, and schedule or publish to X,
+  LinkedIn, Instagram, Threads and YouTube. Authenticates with OAuth 2.1
+  Dynamic Client Registration, so there is nothing to install locally.
+author: Autoposting-ai
+url: https://github.com/Autoposting-ai/autoposting-mcp
+license: MIT
+category: social-media
+tags:
+  - social-media
+  - marketing
+  - content-generation
+  - scheduling
+  - automation
+  - video
+  - ai-agents
+  - productivity
+installations:
+  - name: Remote
+    description: Connect over Streamable HTTP with OAuth 2.1 Dynamic Client Registration
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://app.autoposting.ai/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
