@@ -1,0 +1,47 @@
+id: orcareplay
+name: OrcaReplay
+description: >-
+  Exposes a locally recorded coding-agent run to your agent through MCP. Six
+  read-and-replay tools over the local trace store - list, show, checkpoints,
+  graph, replay and compare - so the agent can answer "why did this happen" from
+  the recording instead of reconstructing it.
+author: Continuum-AI-Corp
+url: https://github.com/Continuum-AI-Corp/OrcaReplay
+license: Apache-2.0
+category: debugging
+tags:
+  - record-replay
+  - trace
+  - debugging
+  - agent-runs
+  - forensics
+  - diff
+  - coding-agent
+installations:
+  - name: NPX
+    description: Run the OrcaReplay MCP server with npx, no global install required.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "orcareplay", "mcp"]
+      }
+    prerequisites:
+      - Node.js 20 or newer
+      - At least one run recorded with `orca record <agent>` in the project's .orca directory
+    transports:
+      - stdio
+  - name: Windows (CMD)
+    description: Run the OrcaReplay MCP server on Windows using cmd and npx.
+    config: |-
+      {
+        "command": "cmd",
+        "args": ["/c", "npx", "-y", "orcareplay", "mcp"]
+      }
+    prerequisites:
+      - Node.js 20 or newer
+      - Windows OS
+      - At least one run recorded with `orca record <agent>` in the project's .orca directory
+    transports:
+      - stdio
+featured: false
+verified: false
