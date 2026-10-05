@@ -1,0 +1,13 @@
+id: brianbooms_mcp
+name: brianbooms-mcp
+description: MCP server for Brian Booms' agent-commerce storefront — browse the x402 pay-per-call catalog and get exact USDC-on-Base payment requirements.
+author: Brian Booms
+url: https://github.com/brianbooms/brianbooms-mcp
+license: MIT
+category: e-commerce
+tags: [x402, payments, usdc, agent-commerce, catalog]
+installations:
+  - name: NPX
+    config: '{"command":"npx","args":["-y","github:brianbooms/brianbooms-mcp"]}'
+    prerequisites: [node]
+    transports: [stdio]
