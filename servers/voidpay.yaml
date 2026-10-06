@@ -1,0 +1,61 @@
+id: voidpay
+name: Voidpay
+description: >-
+  MCP server for Voidpay, Voidly's hosted marketplace for AI-agent services.
+  Agents find services and storefronts and prepare owner-approved checkout
+  links; the connector never signs, pays or holds keys. Starts with no
+  credentials; creator tools need an owner-approved setup file.
+author: Voidly
+url: https://github.com/voidly-ai/pay-mcp
+license: Apache-2.0
+category: payments
+tags:
+  - marketplace
+  - agent-services
+  - checkout
+  - storefront
+  - voidpay
+installations:
+  - name: NPX
+    description: Run the local stdio server with no credentials (discovery tools only).
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@voidly/pay-mcp@0.7.4"]
+      }
+    prerequisites:
+      - Node.js 20 or newer
+    transports:
+      - stdio
+  - name: NPX with creator setup
+    description: Enable the creator tools by pointing VOIDPAY_CREATOR_SETUP_FILE at your owner-approved setup JSON.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@voidly/pay-mcp@0.7.4"],
+        "env": {
+          "VOIDPAY_CREATOR_SETUP_FILE": "${VOIDPAY_CREATOR_SETUP_FILE}"
+        }
+      }
+    prerequisites:
+      - Node.js 20 or newer
+    parameters:
+      - name: Creator setup file
+        key: VOIDPAY_CREATOR_SETUP_FILE
+        description: Absolute path to the owner-approved creator setup JSON (keep it private).
+        placeholder: /absolute/path/to/creator-setup.json
+        required: true
+    transports:
+      - stdio
+  - name: Remote (Streamable HTTP)
+    description: Hosted endpoint with the read-only Voidpay discovery tools; no auth.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://api.voidly.ai/mcp/voidpay"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
