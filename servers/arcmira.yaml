@@ -1,0 +1,48 @@
+id: arcmira
+name: "Arcmira: YouTube Transcript Search"
+description: >-
+  Search indexed YouTube transcripts for timestamped passages and speaker
+  appearances. Sponsor and recommendation research is available on eligible plans.
+author: Arcmira
+url: https://arcmira.com/docs/mcp-server
+license: Proprietary
+category: research
+tags:
+  - youtube
+  - transcripts
+  - search
+  - research
+installations:
+  - name: Remote (OAuth)
+    description: Connect to Arcmira and sign in through an MCP OAuth client.
+    config: |-
+      {
+        "url": "https://mcp.arcmira.com/mcp"
+      }
+    prerequisites:
+      - Arcmira account at https://arcmira.com/
+      - MCP client supporting OAuth and Streamable HTTP
+    transports:
+      - streamable-http
+  - name: Remote (API key)
+    description: Connect with an Arcmira API key when the client cannot use OAuth.
+    config: |-
+      {
+        "url": "https://mcp.arcmira.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${ARCMIRA_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Arcmira account at https://arcmira.com/
+      - MCP client supporting Streamable HTTP
+    parameters:
+      - name: Arcmira API key
+        key: ARCMIRA_API_KEY
+        description: API key from your Arcmira account.
+        placeholder: Your Arcmira API key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
