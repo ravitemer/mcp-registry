@@ -1,0 +1,35 @@
+id: fincept
+name: Fincept MCP
+description: >-
+  Hosted MCP server for Fincept Terminal: quotes, candles, option chains, fundamentals,
+  economic data, SEC filings, news, backtests, paper trading and 15 quant engines
+  (statistics, forecasting, volatility, portfolio optimisation, derivatives pricing).
+  OAuth sign-in; requires the paid Exclusive Pro plan.
+author: Fincept-Corporation
+url: https://github.com/Fincept-Corporation/fincept-mcp-docs
+category: finance
+tags:
+  - finance
+  - stock-market
+  - trading
+  - economics
+  - quant
+  - backtesting
+  - portfolio
+  - options
+  - forecasting
+  - remote
+  - oauth
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect via Streamable HTTP. Sign in once in the browser with OAuth 2.1; no API key needed.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://enterprise.fincept.in/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
