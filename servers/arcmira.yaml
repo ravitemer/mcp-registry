@@ -4,7 +4,7 @@ description: >-
   Search indexed YouTube transcripts for timestamped passages and speaker
   appearances. Sponsor and recommendation research is available on eligible plans.
 author: Arcmira
-url: https://arcmira.com/docs/mcp-server
+url: https://github.com/arcmira/mcp
 license: Proprietary
 category: research
 tags:
@@ -21,6 +21,8 @@ installations:
       }
     prerequisites:
       - Arcmira account at https://arcmira.com/
+      - API documentation https://arcmira.com/docs
+      - MCP setup https://arcmira.com/docs/mcp-server
       - MCP client supporting OAuth and Streamable HTTP
     transports:
       - streamable-http
@@ -35,6 +37,8 @@ installations:
       }
     prerequisites:
       - Arcmira account at https://arcmira.com/
+      - API documentation https://arcmira.com/docs
+      - MCP setup https://arcmira.com/docs/mcp-server
       - MCP client supporting Streamable HTTP
     parameters:
       - name: Arcmira API key
