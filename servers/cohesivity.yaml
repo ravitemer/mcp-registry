@@ -1,0 +1,44 @@
+id: cohesivity
+name: Cohesivity
+description: "cohesivity.ai offers free agent native backend services. Anonymous account (no-signup) to get started through MCP or API. Hosting, postgres, email, storage, containers, LLMs, voice and third-party APIs. Includes free tiers and 5 USD/mo in AI and Search credits. Top-ups through x402."
+author: Cohesivity
+url: https://github.com/cohesivity-org/cohesivity-plugin
+license: MIT
+category: development
+tags:
+  - backend
+  - infrastructure
+  - postgres
+  - hosting
+  - email
+installations:
+  - name: Remote
+    description: OAuth-protected account management over Streamable HTTP; use Local for anonymous project provisioning.
+    config: |-
+      {
+        "url": "https://cohesivity.ai/mcp/manage"
+      }
+    prerequisites:
+      - An MCP client supporting Streamable HTTP and OAuth sign-in
+      - Sign in to Cohesivity through the client's OAuth flow
+    transports:
+      - streamable-http
+  - name: Local
+    description: Run the local project MCP from a checkout of cohesivity-org/cohesivity-plugin; tenant creation requires explicit confirmation.
+    config: |-
+      {
+        "command": "node",
+        "args": ["${COHESIVITY_PLUGIN_PATH}/mcp/project-bootstrap.mjs"]
+      }
+    prerequisites:
+      - Node.js 18 or newer
+      - A local checkout of https://github.com/cohesivity-org/cohesivity-plugin
+    parameters:
+      - name: Cohesivity plugin checkout
+        key: COHESIVITY_PLUGIN_PATH
+        description: Absolute path to the repository checkout, without a trailing slash
+        placeholder: /absolute/path/to/cohesivity-plugin
+    transports:
+      - stdio
+featured: false
+verified: false
