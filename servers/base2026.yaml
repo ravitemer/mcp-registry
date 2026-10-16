@@ -1,0 +1,29 @@
+id: base2026
+name: Base2026 Research MCP
+description: >-
+  Read-only public research and SEO evidence tools over a hosted Streamable HTTP
+  endpoint, including source search and retrieval, creator and topic lookups,
+  topic signals, and a public data manifest.
+author: offflinerpsy
+url: https://github.com/offflinerpsy/base2026
+license: Apache-2.0
+category: research
+tags:
+  - research
+  - seo
+  - evidence
+  - search
+  - streamable-http
+installations:
+  - name: Remote
+    description: Connect to the public read-only endpoint; no local runtime or API key is required.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://base2026.dev/api/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
