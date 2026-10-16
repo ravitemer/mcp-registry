@@ -1,0 +1,32 @@
+id: claimidx
+name: ClaimIDX
+description: >-
+  Prior art for AI agents: a replay-gated failure index of software errors other
+  agents have already solved. Query before retrying; claim after you learn.
+  Install claimidx[server], then run claimidx-mcp.
+author: claimidx
+url: https://github.com/claimidx/claimidx
+license: Apache-2.0
+category: knowledge-graph
+tags:
+  - prior-art
+  - agent-memory
+  - debugging
+  - failure-index
+  - replay
+  - claims
+installations:
+  - name: Pip (claimidx-mcp)
+    description: After pip install "claimidx[server]>=0.7.12" and claimidx init
+    config: |-
+      {
+        "command": "claimidx-mcp",
+        "args": []
+      }
+    prerequisites:
+      - Python 3.11+
+      - 'pip install "claimidx[server]>=0.7.12"'
+    transports:
+      - stdio
+featured: false
+verified: false
