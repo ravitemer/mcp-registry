@@ -1,0 +1,37 @@
+id: statsnet
+name: Statsnet
+description: >-
+  Background check any company in the world: registration, executives, courts and finances.
+author: usenetstate
+url: https://github.com/usenetstate/statsnet-mcp
+license: Proprietary
+category: research
+tags:
+  - company-data
+  - background-check
+  - due-diligence
+  - business-intelligence
+  - osint
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect to the hosted Statsnet MCP endpoint.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://statsnet.co/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: Remote (HTTP)
+    description: Connect via HTTP transport.
+    config: |-
+      {
+        "type": "http",
+        "url": "https://statsnet.co/mcp"
+      }
+    prerequisites: []
+    transports:
+      - http
+featured: false
+verified: false
