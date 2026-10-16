@@ -1,0 +1,30 @@
+id: skyaccess
+name: SkyAccess
+description: >-
+  Search 5,000+ live empty leg flights, get charter price estimates and booking
+  links. No account or API key.
+author: SkyAccess
+url: https://github.com/sky-access/skyaccess-mcp
+license: MIT
+category: travel
+tags:
+  - travel
+  - transportation
+  - private-jet
+  - empty-legs
+  - charter
+  - aviation
+  - flights
+installations:
+  - name: Remote
+    description: Connect via Streamable HTTP. No account or API key required.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.skyaccess.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
