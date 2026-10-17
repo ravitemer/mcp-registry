@@ -1,0 +1,29 @@
+id: posy
+name: Posy
+description: >-
+  Build and edit a hand-made link-in-bio page: create or import a page, add,
+  update, move and remove link tiles, set the theme and profile, and publish.
+  Hosted server with OAuth sign-in; open source (MIT) and self-hostable.
+author: Himanshu-Sangshetti
+url: https://github.com/Himanshu-Sangshetti/posy
+license: MIT
+category: productivity
+tags:
+  - link-in-bio
+  - website-builder
+  - linktree-alternative
+  - remote
+  - oauth
+installations:
+  - name: Remote
+    description: Hosted server at posy.page (OAuth sign-in, no key to copy)
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://posy.page/api/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
