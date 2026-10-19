@@ -1,0 +1,28 @@
+id: 3descu_quote
+name: 3Descu 3D Printing Quotes (EU)
+description: >-
+  Instant FDM and SLA 3D printing quotes from an ISO 9001:2015 certified EU
+  factory with 200+ printers. List materials, measure an STL or OBJ from a
+  public link and get a price in EUR across Economy, Standard and Express with
+  production days. Read-only, no account.
+author: 3Descu
+url: https://quote.3descu.com/ai-agents/
+category: manufacturing
+tags:
+  - 3d-printing
+  - manufacturing
+  - quotes
+  - remote
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Hosted endpoint, no authentication.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://zzamnvhadwibvafqcfpd.supabase.co/functions/v1/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
