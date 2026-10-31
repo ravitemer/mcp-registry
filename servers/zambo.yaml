@@ -1,0 +1,31 @@
+id: zambo
+name: Zambo
+description: >-
+  Give your AI hands. One URL. Type a job. Get a receipt. 120 native tools across
+  17 products behind one zero-auth remote MCP endpoint. Free: 20 calls/tool/day, no account.
+author: zambodotdev
+url: https://github.com/zambodotdev/zambo-mcp
+license: MIT
+category: ai-agents
+tags:
+  - mcp
+  - remote
+  - zero-auth
+  - ai-agents
+  - code-audit
+  - lead-generation
+  - prompt-security
+  - productivity
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect via Streamable HTTP. Zero-auth — free 20 calls/tool/day, no account.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://zambo.dev/api/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
