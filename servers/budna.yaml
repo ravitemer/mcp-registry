@@ -1,0 +1,31 @@
+id: budna
+name: Budna MCP
+description: >-
+  Read-only access to public listings on Budna, a Swedish second-hand
+  marketplace. Search listings, categories, and filters, and inspect listings,
+  seller profiles, and bid and rating summaries. No account or API key needed.
+author: budna-marketplace
+url: https://github.com/budna-marketplace/mcp
+license: MIT
+category: shopping
+tags:
+  - marketplace
+  - second-hand
+  - shopping
+  - listings
+  - sweden
+  - read-only
+installations:
+  - name: NPX
+    description: Run the Budna MCP server with no API key or signup.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["--yes", "@budna-marketplace/mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
