@@ -1,0 +1,44 @@
+id: seqora
+name: Seqora
+description: >-
+  MCP server built into the Seqora desktop database client. Agents read the
+  schemas of PostgreSQL, MySQL, MariaDB and SQLite connections the user
+  shares, by name, without receiving credentials. On Pro they can propose
+  PostgreSQL schema changes that the user reviews and applies in Seqora.
+author: Seqora
+url: https://seqora.dev/#agents
+license: Proprietary
+category: database-management
+tags:
+  - database-management
+  - postgresql
+  - mysql
+  - mariadb
+  - sqlite
+  - schema
+installations:
+  - name: Seqora app
+    description: Runs the server from the installed Seqora app
+    config: |-
+      {
+        "command": "${SEQORA_PATH}",
+        "args": ["mcp"],
+        "env": {
+          "SEQORA_MCP_CLIENT": "${SEQORA_MCP_CLIENT}"
+        }
+      }
+    prerequisites:
+      - Seqora desktop app (macOS Apple Silicon or Windows x64)
+    parameters:
+      - name: Seqora executable
+        key: SEQORA_PATH
+        description: Path to the Seqora executable inside the installed app
+        placeholder: /Applications/Seqora.app/Contents/MacOS/seqora
+      - name: Client token
+        key: SEQORA_MCP_CLIENT
+        description: Token for this client, from Settings > Agents > Copy config in Seqora
+        placeholder: sqa_...
+    transports:
+      - stdio
+featured: false
+verified: false
