@@ -1,0 +1,33 @@
+id: dchub
+name: DC Hub
+description: >-
+  DC Hub is the live data layer for data-center site selection. Its Data Center
+  Power Index (DCPI) is a daily score of where data centers can get grid power,
+  across 300+ markets. Live grid feeds from the seven US ISOs, interconnection
+  queues, energy prices, fiber and gas infrastructure, with as-of timestamps and
+  citations. 94 tools; the free tier needs no key.
+author: azmartone67
+url: https://github.com/azmartone67/dchub-mcp-server
+category: data
+tags:
+  - data-center
+  - energy
+  - power-grid
+  - site-selection
+  - interconnection-queue
+  - electricity-prices
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint. The free tier needs no API key.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://dchub.cloud/mcp"
+      }
+    prerequisites:
+      - MCP client supporting Streamable HTTP
+    transports:
+      - streamable-http
+featured: false
+verified: false
