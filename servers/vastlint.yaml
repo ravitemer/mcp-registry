@@ -1,0 +1,39 @@
+id: vastlint
+name: VASTlint
+description: >-
+  Validate VAST, VMAP, and DAAST ad tags against IAB Tech Lab specs. Public
+  tools require no auth. Hosted at https://vastlint.org/mcp or run locally via
+  cargo install vastlint-mcp.
+author: aleksUIX
+url: https://github.com/aleksUIX/vastlint
+license: Apache-2.0
+category: development
+tags:
+  - vast
+  - vmap
+  - daast
+  - iab
+  - validator
+  - advertising
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint. Auth none for public tools.
+    config: |-
+      {
+        "url": "https://vastlint.org/mcp"
+      }
+    transports:
+      - streamable-http
+      - sse
+  - name: Cargo
+    description: Local stdio binary via cargo install vastlint-mcp.
+    config: |-
+      {
+        "command": "vastlint-mcp"
+      }
+    prerequisites:
+      - Rust
+    transports:
+      - stdio
+featured: false
+verified: false
