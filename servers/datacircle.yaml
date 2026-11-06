@@ -1,0 +1,24 @@
+id: datacircle
+name: Datacircle
+description: Find the best GTM APIs. Free remote MCP server with no key.
+author: waynehamadi
+url: https://github.com/waynehamadi/datacircle-plugin
+license: MIT
+category: research
+tags:
+  - gtm
+  - api
+  - benchmark
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect over Streamable HTTP. No API key needed.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://api.datacircle.dev/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
