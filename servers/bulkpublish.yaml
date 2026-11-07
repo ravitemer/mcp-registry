@@ -1,0 +1,58 @@
+id: bulkpublish
+name: BulkPublish
+description: >-
+  Hosted and local MCP workflows for AI agents to plan, adapt, review, schedule,
+  and batch-publish social media content across connected channels.
+author: BulkPublish
+url: https://github.com/azeemkafridi/bulkpublish-api
+license: MIT
+category: Social Media
+tags:
+  - social-media
+  - publishing
+  - scheduling
+  - marketing
+  - bulk-publishing
+  - ai-agents
+  - streamable-http
+installations:
+  - name: NPX
+    description: Run the published BulkPublish MCP server locally.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@bulkpublish/mcp-server"],
+        "env": {
+          "BULKPUBLISH_API_KEY": "${BULKPUBLISH_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js 20.19 or later
+      - A BulkPublish API key
+    parameters:
+      - name: BulkPublish API key
+        key: BULKPUBLISH_API_KEY
+        description: Runtime credential for BulkPublish API operations.
+        placeholder: bp_your_api_key_here
+    transports:
+      - stdio
+  - name: Hosted MCP
+    description: Connect to the hosted Streamable HTTP MCP endpoint.
+    config: |-
+      {
+        "url": "https://mcp.bulkpublish.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${BULKPUBLISH_API_KEY}"
+        }
+      }
+    prerequisites:
+      - A BulkPublish API key
+    parameters:
+      - name: BulkPublish API key
+        key: BULKPUBLISH_API_KEY
+        description: Runtime credential for authenticated tool calls.
+        placeholder: bp_your_api_key_here
+    transports:
+      - streamable-http
+featured: false
+verified: false
