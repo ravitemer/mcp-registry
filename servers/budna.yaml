@@ -1,9 +1,9 @@
 id: budna
 name: Budna MCP
 description: >-
-  Read-only access to public listings on Budna, a Swedish second-hand
-  marketplace. Search listings, categories, and filters, and inspect listings,
-  seller profiles, and bid and rating summaries. No account or API key needed.
+  Read-only access to public listings on Budna, a Swedish marketplace for new
+  and pre-owned items. Search listings, categories, and filters, and inspect
+  listings, seller profiles, and bid and rating summaries. No account or API key needed.
 author: budna-marketplace
 url: https://github.com/budna-marketplace/mcp
 license: MIT
