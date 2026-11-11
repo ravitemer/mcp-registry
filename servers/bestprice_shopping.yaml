@@ -1,0 +1,29 @@
+id: bestprice_shopping
+name: BestPrice Shopping
+description: >-
+  Official read-only shopping MCP server from BestPrice.gr for Greece.
+  Evidence-backed shopping decisions, product search, current merchant offers
+  with delivered totals, and price history. Hosted remote server, no API key needed.
+author: TheBestCo
+url: https://github.com/TheBestCo/bestprice-mcp
+license: Apache-2.0
+category: shopping
+tags:
+  - shopping
+  - e-commerce
+  - price-comparison
+  - price-history
+  - greece
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect to the hosted server via Streamable HTTP. No API key or authentication required.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.bestprice.gr/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
