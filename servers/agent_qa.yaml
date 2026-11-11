@@ -1,0 +1,26 @@
+id: agent_qa
+name: Agent QA
+description: Source-available QA harness for natural-language web and mobile regression tests, exposed through a local stdio MCP server.
+author: Vostride
+url: https://github.com/vostride/agent-qa
+license: FSL-1.1-ALv2
+category: development
+tags:
+  - testing
+  - quality-assurance
+  - browser-automation
+  - mobile-testing
+installations:
+  - name: NPX
+    description: Run the Agent QA MCP server over stdio
+    config: |
+      {
+        "command": "npx",
+        "args": ["-y", "agent-qa@0.1.21", "mcp"]
+      }
+    prerequisites:
+      - Node.js 24 or newer
+    transports:
+      - stdio
+featured: false
+verified: false
