@@ -1,0 +1,41 @@
+id: curlshot
+name: CurlShot
+description: >-
+  Hosted screenshot server for AI agents. The take_screenshot tool turns a URL,
+  HTML or Markdown into a PNG, JPEG, WebP, PDF or scrolling video, rendered in a
+  real browser with full-page capture, device presets and cookie banners removed.
+  list_devices returns the available device presets. Free plan: 100 screenshots
+  a month, no card.
+author: CurlShot
+url: https://github.com/SergiuPogor/curlshot-mcp
+license: MIT
+category: browser-automation
+tags:
+  - screenshot
+  - website-screenshot
+  - pdf
+  - html-to-image
+  - web-capture
+  - remote
+installations:
+  - name: Remote
+    description: Connect to the hosted MCP server over streamable HTTP
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://curlshot.com/api/mcp",
+        "headers": {
+          "Authorization": "Bearer ${CURLSHOT_API_KEY}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: CurlShot API Key
+        key: CURLSHOT_API_KEY
+        description: API key from https://curlshot.com/register (free plan available)
+        placeholder: your_curlshot_api_key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
