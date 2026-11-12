@@ -1,176 +1,176 @@
 {
   "version": "1.0.0",
-  "lastUpdated": 1794404320,
+  "lastUpdated": 1794494537,
   "servers": {
     "filesystem": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "github": {
-      "stars": 34389,
-      "lastCommit": 1794389272,
-      "updatedAt": 1794404320
+      "stars": 34408,
+      "lastCommit": 1794476576,
+      "updatedAt": 1794494537
     },
     "context7": {
-      "stars": 64588,
-      "lastCommit": 1794404002,
-      "updatedAt": 1794404320
+      "stars": 64680,
+      "lastCommit": 1794487844,
+      "updatedAt": 1794494537
     },
     "sequentialthinking": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "apify": {
-      "stars": 15710,
-      "lastCommit": 1794400844,
-      "updatedAt": 1794404320
+      "stars": 15915,
+      "lastCommit": 1794494482,
+      "updatedAt": 1794494537
     },
     "aws_kb_retrieval_server": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "brave_search": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "browserbase": {
-      "stars": 3397,
+      "stars": 3398,
       "lastCommit": 1784584094,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "git": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "gitlab": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "memory": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "postgres": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "puppeteer": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "redis": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "sentry": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "slack": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "sqlite": {
       "stars": 306,
       "lastCommit": 1748455032,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "stripe": {
-      "stars": 2055,
-      "lastCommit": 1794360196,
-      "updatedAt": 1794404320
+      "stars": 2059,
+      "lastCommit": 1794443477,
+      "updatedAt": 1794494537
     },
     "tavily": {
-      "stars": 2486,
+      "stars": 2488,
       "lastCommit": 1793896614,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "time": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "esignatures": {
       "stars": 40,
       "lastCommit": 1792304594,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "riza": {
       "stars": 13,
       "lastCommit": 1734466929,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "fetch": {
-      "stars": 91924,
-      "lastCommit": 1794380836,
-      "updatedAt": 1794404320
+      "stars": 91949,
+      "lastCommit": 1794461872,
+      "updatedAt": 1794494537
     },
     "vapi": {
       "stars": 58,
-      "lastCommit": 1794338998,
-      "updatedAt": 1794404320
+      "lastCommit": 1794425898,
+      "updatedAt": 1794494537
     },
     "browser_tools": {
       "stars": 7342,
       "lastCommit": 1793214379,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "figma": {
-      "stars": 16191,
+      "stars": 16196,
       "lastCommit": 1793079432,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "firecrawl": {
-      "stars": 7800,
-      "lastCommit": 1794402067,
-      "updatedAt": 1794404320
+      "stars": 7807,
+      "lastCommit": 1794492926,
+      "updatedAt": 1794494537
     },
     "perplexity": {
       "stars": 310,
       "lastCommit": 1743096750,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "playwright": {
-      "stars": 39496,
-      "lastCommit": 1794329438,
-      "updatedAt": 1794404320
+      "stars": 39553,
+      "lastCommit": 1794420519,
+      "updatedAt": 1794494537
     },
     "task_master": {
-      "stars": 28345,
+      "stars": 28351,
       "lastCommit": 1777382832,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "aws_docs": {
-      "stars": 9905,
-      "lastCommit": 1794349994,
-      "updatedAt": 1794404320
+      "stars": 9911,
+      "lastCommit": 1794452345,
+      "updatedAt": 1794494537
     },
     "blender": {
-      "stars": 33988,
-      "lastCommit": 1793797448,
-      "updatedAt": 1794404320
+      "stars": 34144,
+      "lastCommit": 1794484877,
+      "updatedAt": 1794494537
     },
     "magic": {
-      "stars": 6458,
+      "stars": 6468,
       "lastCommit": 1788986302,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "supabase": {
-      "stars": 836,
+      "stars": 837,
       "lastCommit": 1787344039,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     },
     "bgpt": {
       "stars": 43,
@@ -180,7 +180,7 @@
     "intodns_mcp": {
       "stars": 2,
       "lastCommit": 1793132362,
-      "updatedAt": 1794404320
+      "updatedAt": 1794494537
     }
   }
 }
