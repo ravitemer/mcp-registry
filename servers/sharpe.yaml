@@ -1,0 +1,30 @@
+id: sharpe
+name: Sharpe MCP Server
+description: >-
+  MCP server for crypto market intelligence, including funding rates, futures,
+  options, arbitrage, narratives, exchange listings, and news.
+author: Sharpe
+url: https://www.sharpe.ai/docs/mcp-server
+license: MIT
+category: finance
+tags:
+  - crypto
+  - market-data
+  - derivatives
+  - trading
+  - finance
+installations:
+  - name: UVX
+    description: Run the Sharpe MCP server with uvx.
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["sharpe-mcp"]
+      }
+    prerequisites:
+      - Python
+      - uv
+    transports:
+      - stdio
+featured: false
+verified: false
