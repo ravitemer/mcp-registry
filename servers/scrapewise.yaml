@@ -1,0 +1,47 @@
+id: scrapewise
+name: Scrapewise
+description: >-
+  Remote MCP server that scrapes, cleans and matches product and price data
+  from any website. Tools for Google search, local businesses, Amazon, idealo,
+  Google Trends, page fetching and product data extraction and cleaning.
+author: BEBOTECH OU
+url: https://github.com/BEBOTECH-OU/scrapewise-mcp
+license: MIT
+category: web-scraping
+tags:
+  - web-scraping
+  - data-extraction
+  - e-commerce
+  - product-data
+  - price-comparison
+  - search
+installations:
+  - name: Remote (OAuth)
+    description: Hosted Streamable HTTP endpoint; sign in with a Scrapewise account
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.scrapewise.ai/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: Remote (API key)
+    description: Hosted Streamable HTTP endpoint with a Scrapewise API key
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.scrapewise.ai/mcp",
+        "headers": {
+          "Authorization": "Bearer ${SCRAPEWISE_API_KEY}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: Scrapewise API Key
+        key: SCRAPEWISE_API_KEY
+        placeholder: your_scrapewise_api_key
+    transports:
+      - streamable-http
+featured: false
+verified: false
