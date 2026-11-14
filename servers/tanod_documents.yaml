@@ -1,0 +1,29 @@
+id: tanod_documents
+name: Tanod Documents
+description: >-
+  Remote PDF and Office tools: documents to Markdown, PDF text and tables,
+  OCR, bank statement PDF to CSV, Office to PDF, PDF to Word, merge, split,
+  compress and forms. No account or API key required. Some tools have a
+  free daily allowance; paid calls support USDC via x402.
+author: tanod-labs
+url: https://tanod.dev/mcp-servers/
+category: productivity
+tags:
+  - pdf
+  - documents
+  - markdown
+  - ocr
+  - office
+  - x402
+installations:
+  - name: Remote
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://tanod.dev/mcp/docs"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
