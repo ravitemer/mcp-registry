@@ -1,0 +1,27 @@
+id: docstar
+name: DocStar
+description: >-
+  DocStar turns your product's API into published docs that your users' AI
+  assistants can read and call. Reading docs needs no account; changes need
+  DocStar sign-in (OAuth).
+author: Walkover
+url: https://github.com/swayammaheshwari/docstar-mcp
+category: documentation
+tags:
+  - api-docs
+  - documentation
+  - developer-tools
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint; reads work without sign-in, OAuth sign-in when prompted for changes
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.docstar.io/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
