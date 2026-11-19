@@ -1,0 +1,28 @@
+id: embarko
+name: Embarko
+description: >-
+  Deploy and host AI-built apps and websites, and get a live URL without any
+  DevOps setup. Hosted remote server with OAuth sign-in. Tools: deploy_app,
+  read_app, update_app, app_danger_zone.
+author: Walkover
+url: https://github.com/walkover-mcp/embarko
+category: deployment
+tags:
+  - deployment
+  - hosting
+  - web-apps
+  - devops
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint; sign in with OAuth when prompted
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.embarko.ai/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
