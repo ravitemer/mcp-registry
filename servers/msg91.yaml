@@ -1,0 +1,29 @@
+id: msg91
+name: MSG91
+description: >-
+  MSG91 is a cloud communication platform for SMS, WhatsApp, email, voice calls
+  and OTP verification. This hosted MCP server lets AI assistants search the
+  MSG91 docs and API reference and call MSG91 APIs; sign in with OAuth when
+  prompted.
+author: Walkover
+url: https://github.com/walkover-mcp/msg91
+category: communication
+tags:
+  - sms
+  - whatsapp
+  - email
+  - otp
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint; sign in with OAuth when prompted
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.msg91.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
