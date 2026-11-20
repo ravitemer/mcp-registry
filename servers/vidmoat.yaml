@@ -1,0 +1,36 @@
+id: vidmoat
+name: Vidmoat
+description: >-
+  Hosted AI video editor your agent can drive over MCP: import footage, edit a
+  real multi-track timeline (captions, colour, music, voice, reframing), preview
+  frames and render MP4s. OAuth or a Vidmoat API key; test keys are free, live
+  MCP access needs the Studio plan.
+author: Vidmoat
+url: https://developer.vidmoat.com/developer/docs/mcp
+category: media
+tags:
+  - video-editing
+  - video
+  - captions
+  - rendering
+  - remote
+installations:
+  - name: Remote (Streamable HTTP, API key)
+    description: Hosted endpoint. Pass a Vidmoat API key as a bearer token; OAuth clients only need the URL.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://api.vidmoat.com/api/mcp",
+        "headers": {
+          "Authorization": "Bearer ${VIDMOAT_KEY}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: Vidmoat API key
+        key: VIDMOAT_KEY
+        placeholder: your_vidmoat_api_key
+    transports:
+      - streamable-http
+featured: false
+verified: false
