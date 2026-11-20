@@ -1,0 +1,31 @@
+id: roles_em_sp
+name: Rolês em SP
+description: >-
+  Curated cultural and leisure catalogue discovery across São Paulo, Brazil.
+  Semantic exploration of cultural spots, nightlife, exhibits, gastronomy,
+  and local outings via 3 read-only tools (search_roles, get_role_details,
+  list_categories_and_regions). Streamable HTTP with OAuth/access eligibility.
+author: Dan (Danilo) Rio
+url: https://rolesemsp.com.br/
+category: knowledge-retrieval
+tags:
+  - cultural-discovery
+  - sao-paulo
+  - leisure
+  - events
+  - gastronomy
+  - knowledge-retrieval
+  - remote
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Hosted Streamable HTTP endpoint with OAuth/access eligibility.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://rolesemsp.com.br/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
