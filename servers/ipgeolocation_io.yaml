@@ -1,7 +1,7 @@
 id: ipgeolocation_io
 name: IPGeolocation.io MCP Server
 description: >-
-  The official IPGeolocation.io MCP server provides 17 tools for IP geolocation,
+  The official IPGeolocation.io MCP server provides tools for IP geolocation,
   company information, ASN and network data, IP security (VPN, proxy, Tor, bot,
   hosting and spam detection), abuse contacts, time zones, astronomy, currency
   data and user-agent parsing.
@@ -16,8 +16,8 @@ tags:
   - ip-security
   - osint
 installations:
-  - name: NPX
-    description: Run locally over stdio.
+  - name: Local (NPX)
+    description: Run 17 tools locally with Node.js 22 or later. The local server also includes get_my_ip, which works without an API key.
     config: |-
       {
         "command": "npx",
@@ -36,5 +36,22 @@ installations:
         required: false
     transports:
       - stdio
+  - name: Hosted
+    description: Connect to 16 tools over Streamable HTTP. No Node.js installation is required for the hosted server.
+    config: |-
+      {
+        "url": "https://mcp.ipgeolocation.io/mcp",
+        "headers": {
+          "X-IPGeolocation-API-Key": "${IPGEOLOCATION_API_KEY}"
+        }
+      }
+    parameters:
+      - name: IPGeolocation.io API key
+        key: IPGEOLOCATION_API_KEY
+        description: Set this header in your private client settings.
+        placeholder: "<YOUR_API_KEY>"
+        required: true
+    transports:
+      - streamable-http
 featured: false
 verified: false
