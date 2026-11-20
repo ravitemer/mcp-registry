@@ -1,0 +1,26 @@
+id: nano_mcp
+name: Nano MCP
+description: >-
+  Lets AI assistants work with Nano (XNO) accounts: check balances, send and
+  receive, generate QR codes and compute proof of work locally. Feeless,
+  instant settlement.
+author: dhyabi2
+url: https://github.com/dhyabi2/NANO_MCP_SERVER
+category: finance
+tags:
+  - nano
+  - xno
+  - payments
+  - crypto
+installations:
+  - name: NPX
+    description: Run using NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "nano-mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
