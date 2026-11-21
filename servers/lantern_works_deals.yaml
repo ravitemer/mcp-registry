@@ -1,0 +1,41 @@
+id: lantern_works_deals
+name: Lantern Works GPU Prices
+description: >-
+  Free, read-only MCP server for GPU cloud rental prices, price changes and
+  deals: compares H100, H200, A100, L40S, RTX 4090/5090 and more across tracked
+  providers, cheapest first, with each price's vendor source and check time,
+  price history and GPU job cost estimates. No API key.
+author: connormatthewdouglas
+url: https://github.com/connormatthewdouglas/agent-work-stack-deals
+license: MIT
+category: cloud-pricing
+tags:
+  - gpu
+  - cloud
+  - pricing
+  - price-comparison
+  - cost-estimation
+  - no-api-key
+installations:
+  - name: Remote
+    description: Connect to the hosted server over Streamable HTTP (no auth).
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://lantern-works-mcp.lantern-works.workers.dev/mcp"
+      }
+    transports:
+      - streamable-http
+  - name: UVX
+    description: Run locally from PyPI (lantern-works-deals-mcp) with no API key.
+    config: |-
+      {
+        "command": "uvx",
+        "args": ["lantern-works-deals-mcp"]
+      }
+    prerequisites:
+      - Python and uv
+    transports:
+      - stdio
+featured: false
+verified: false
