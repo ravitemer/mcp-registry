@@ -1,0 +1,27 @@
+id: flowfeed
+name: FlowFeed
+description: >-
+  Real-time macro, forex and crypto news, the economic calendar and central
+  bank releases for AI agents, each with a link to its source. Hosted remote
+  server with OAuth (paid plan).
+author: flowfeed
+url: https://github.com/loyt1/flowfeed-mcp
+category: finance
+tags:
+  - finance
+  - news
+  - forex
+  - crypto
+  - economic-calendar
+installations:
+  - name: Remote
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.flowfeed.cc/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
