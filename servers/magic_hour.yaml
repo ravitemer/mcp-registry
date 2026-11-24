@@ -1,0 +1,39 @@
+id: magic_hour
+name: Magic Hour MCP
+description: >-
+  Official hosted MCP server for Magic Hour with 44 tools for generating and
+  editing AI video, images, and audio. Supports uploads, asynchronous project
+  polling, and exact media download retrieval.
+author: Magic Hour
+url: https://magichour.ai
+category: media-generation
+tags:
+  - ai-video
+  - image-generation
+  - audio-generation
+  - media-editing
+  - remote-mcp
+installations:
+  - name: Remote
+    description: Connect to the hosted Streamable HTTP endpoint with a Magic Hour API key.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.magichour.ai/",
+        "headers": {
+          "Authorization": "Bearer ${MAGIC_HOUR_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Magic Hour account
+      - Magic Hour API key
+    parameters:
+      - name: Magic Hour API Key
+        key: MAGIC_HOUR_API_KEY
+        description: API key from the Magic Hour developer dashboard
+        placeholder: mhk_live_your_api_key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
