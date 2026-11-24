@@ -1,0 +1,11 @@
+id: clickwise
+name: Clickwise
+description: Affiliate programs, deals and tracked links, plus product search by text or GTIN.
+author: Clickwise
+url: https://partners.clickwise.net/developers/
+category: marketing
+tags: [affiliate, commerce, search]
+installations:
+  - name: Remote
+    config: '{"url":"https://partners.clickwise.net/api/v1/mcp"}'
+    transports: [streamable-http]
