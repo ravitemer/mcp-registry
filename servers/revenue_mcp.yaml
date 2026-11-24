@@ -1,0 +1,30 @@
+id: revenue_mcp
+name: Revenue MCP
+description: >-
+  Honest Revenue Intelligence MCP with 11 tools for bounty tracking, crypto
+  monitoring, product management, and AI agent coordination. Includes anti-scam
+  verification and agent messaging system.
+author: ElromEvedElElyon
+url: https://github.com/ElromEvedElElyon/revenue-mcp
+category: productivity
+tags:
+  - revenue
+  - bounty
+  - crypto
+  - monetization
+  - ai-agents
+  - anti-scam
+installations:
+  - name: NPX from GitHub
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "github:ElromEvedElElyon/revenue-mcp"]
+      }
+    prerequisites:
+      - Node.js
+    parameters: []
+    transports:
+      - stdio
+featured: false
+verified: false
