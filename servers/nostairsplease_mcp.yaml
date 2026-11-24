@@ -1,0 +1,27 @@
+id: nostairsplease_mcp
+name: No Stairs Please MCP
+description: >-
+  Search 22,500+ independent live music venues across the US and Canada with
+  booking contacts, stage/PA details, load-in stairs notes, and tour routing.
+author: No Stairs Please
+url: https://nostairsplease.com/mcp
+category: data
+tags:
+  - music-venues
+  - live-music
+  - touring
+  - booking
+  - directory
+  - remote-mcp
+installations:
+  - name: Streamable HTTP
+    description: Connect directly to the remote No Stairs Please MCP server.
+    config: |-
+      {
+        "type": "http",
+        "url": "https://nostairsplease.com/mcp"
+      }
+    transports:
+      - streamable-http
+featured: false
+verified: false
