@@ -1,0 +1,44 @@
+id: springbrand
+name: SpringBrand
+description: >-
+  Go-to-market tools for agents through one connector: social listening across
+  X, TikTok, Instagram, YouTube, Reddit and Xiaohongshu; website traffic,
+  traffic-source and SEO research; company, contact and creator discovery; and
+  copy, image, video and voiceover generation. Agents discover a capability,
+  execute it, and get results back. Billed per call.
+author: SpringBrand
+url: https://springbrand.ai
+category: marketing
+tags:
+  - marketing
+  - seo
+  - social-listening
+  - web-traffic
+  - lead-generation
+  - content-generation
+installations:
+  - name: Remote
+    description: >-
+      Connect directly over Streamable HTTP. Authentication is OAuth 2.1 with
+      dynamic client registration and PKCE, so there is no API key to configure.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://connector.springbrand.ai/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: NPX (mcp-remote)
+    description: Bridge the remote server into clients that only support stdio.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://connector.springbrand.ai/mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
