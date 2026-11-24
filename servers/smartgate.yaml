@@ -1,0 +1,40 @@
+id: smartgate
+name: SmartGate
+description: >-
+  Hosted search, fetch, compress, dedup, budget, memory and pipelines.
+  Not an LLM proxy.
+author: SmartGate
+url: https://smartgate.network/docs/mcp-endpoint
+license: MIT
+category: web-search
+tags:
+  - search
+  - fetch
+  - compression
+  - memory
+  - budget
+installations:
+  - name: Remote (Streamable HTTP)
+    description: >-
+      Hosted gateway. Mint a dashboard API key and paste it as the Bearer
+      token. Do not type the word Bearer twice.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://smartgate.network/api/mcp",
+        "headers": {
+          "Authorization": "Bearer ${SMARTGATE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - SmartGate dashboard API key
+    parameters:
+      - name: SmartGate API Key
+        key: SMARTGATE_API_KEY
+        description: Dashboard API key (sk_live_...). Do not type the word Bearer twice.
+        placeholder: sk_live_...
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
