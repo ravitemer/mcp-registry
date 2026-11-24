@@ -1,0 +1,58 @@
+id: hive_intelligence
+name: Hive Intelligence
+description: >-
+  Managed crypto intelligence MCP for AI agents, covering market data, DeFi
+  analytics, wallet intelligence, token risk, DEX flows, NFTs, infrastructure,
+  and prediction markets.
+author: Hive Intelligence
+url: https://github.com/hive-intel/hive-sdk
+category: data
+tags:
+  - crypto
+  - defi
+  - market-data
+  - wallet-intelligence
+  - token-risk
+  - prediction-markets
+  - mcp
+installations:
+  - name: NPX
+    description: Run the Hive Intelligence stdio MCP server using the published npm package.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "hive-intelligence@latest"],
+        "env": {
+          "HIVE_API_KEY": "${HIVE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js 20+
+      - Hive API key
+    parameters:
+      - name: Hive API Key
+        key: HIVE_API_KEY
+        description: API key for Hive Intelligence.
+        placeholder: hive_your_api_key
+    transports:
+      - stdio
+  - name: Remote HTTP
+    description: Connect to the hosted Hive Intelligence MCP endpoint.
+    config: |-
+      {
+        "url": "https://mcp.hiveintelligence.xyz/mcp",
+        "headers": {
+          "Authorization": "Bearer ${HIVE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Hive API key
+    parameters:
+      - name: Hive API Key
+        key: HIVE_API_KEY
+        description: API key for Hive Intelligence.
+        placeholder: hive_your_api_key
+    transports:
+      - streamable-http
+featured: false
+verified: false
