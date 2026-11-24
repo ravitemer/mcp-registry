@@ -1,0 +1,36 @@
+id: skool_community_mcp
+name: Skool Community Scraper
+description: >-
+  Search Skool communities by keyword. Members, price, rating and estimated monthly revenue for each, plus daily growth tracking.
+author: publicrecords
+url: https://github.com/GeminiGeorge22/publicrecords-mcp
+license: MIT
+category: web-scraping
+tags:
+  - web-scraping
+  - data-extraction
+  - skool
+  - communities
+  - search
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP via Apify MCP. Auth is Apify OAuth or a Bearer token.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.apify.com?tools=publicrecords/skool-community-growth-tracker",
+        "headers": {
+          "Authorization": "Bearer ${APIFY_TOKEN}"
+        }
+      }
+    prerequisites: []
+    parameters:
+      - name: Apify API Token
+        key: APIFY_TOKEN
+        description: Apify API token; tool calls run the Actor on your account
+        placeholder: your_apify_api_token
+        required: false
+    transports:
+      - streamable-http
+featured: false
+verified: false
