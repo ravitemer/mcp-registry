@@ -1,0 +1,48 @@
+id: tuning_engines
+name: Tuning Engines
+description: >-
+  Governed AI control plane for fine-tuning jobs, inference diagnostics,
+  registry inspection, traces, outcomes, insights, and MCP/agent/skill access.
+author: Tuning Engines
+url: https://github.com/cerebrixos-org/tuning-engines-cli
+license: MIT
+category: ai
+tags:
+  - ai
+  - inference
+  - fine-tuning
+  - governance
+  - observability
+  - agents
+  - skills
+  - registry
+installations:
+  - name: NPX
+    description: Run the Tuning Engines MCP server with NPX.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "tuningengines-cli", "mcp", "serve"],
+        "env": {
+          "TE_API_KEY": "${TE_API_KEY}",
+          "TE_API_URL": "${TE_API_URL}"
+        }
+      }
+    prerequisites:
+      - Node.js
+      - Tuning Engines account
+    parameters:
+      - name: Tuning Engines API Key
+        key: TE_API_KEY
+        description: API token used by the MCP server. Registry write tools are disabled unless the server is started with --enable-registry-writes.
+        placeholder: te_...
+        required: true
+      - name: Tuning Engines API URL
+        key: TE_API_URL
+        description: Optional Tuning Engines app API URL.
+        placeholder: https://app.tuningengines.com
+        required: false
+    transports:
+      - stdio
+featured: false
+verified: false
