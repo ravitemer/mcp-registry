@@ -1,0 +1,42 @@
+id: linkedcamp
+name: Linkedcamp
+description: Hosted MCP server for Linkedcamp LinkedIn and email outreach for lead generation agencies. Campaigns, unified inbox, leads and analytics in 133 tools across 15 groups. OAuth 2.1 with PKCE or an X-Api-Key header. Paid plans from $79/mo with a 14-day free trial.
+author: Linkedcamp
+url: https://docs.linkedcamp.com/mcp/overview
+category: communication
+tags:
+  - linkedin
+  - outreach
+  - lead-generation
+  - email
+  - sales
+installations:
+  - name: Remote (OAuth)
+    description: Connect over Streamable HTTP and sign in with OAuth 2.1.
+    config: |
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.linkedcamp.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: Remote (API key)
+    description: Connect over Streamable HTTP with your Linkedcamp API key.
+    config: |
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.linkedcamp.com/mcp",
+        "headers": { "X-Api-Key": "${LINKEDCAMP_API_KEY}" }
+      }
+    prerequisites: []
+    parameters:
+      - name: Linkedcamp API key
+        key: LINKEDCAMP_API_KEY
+        description: Your Linkedcamp API key
+        placeholder: your-api-key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
