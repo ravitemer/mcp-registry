@@ -1,0 +1,60 @@
+id: dreamtune
+name: Dreamtune
+description: >-
+  Access model requests, tool APIs, GPU jobs and request traces through a scoped
+  workspace key. Paid operations require workspace credit and the key's permissions.
+author: Dreamtune
+url: https://docs.dreamtunelabs.com/connect/mcp
+license: MIT SDK; proprietary hosted service
+category: development
+tags:
+  - models
+  - tools
+  - gpu
+  - compute
+  - observability
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP with a workspace key in a custom header
+    config: |-
+      {
+        "url": "https://mcp.dreamtunelabs.com/mcp",
+        "headers": {
+          "X-Dreamtune-API-Key": "${DREAMTUNE_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Dreamtune account and scoped production workspace key
+      - Workspace credit for paid operations
+    parameters:
+      - name: Dreamtune workspace API key
+        key: DREAMTUNE_API_KEY
+        description: Create a key in the API keys dashboard with only the permissions you need
+        required: true
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Local stdio adapter using the published SDK
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "--package=@dreamtune/sdk@0.1.2", "dreamtune-mcp"],
+        "env": {
+          "DREAMTUNE_API_KEY": "${DREAMTUNE_API_KEY}",
+          "DREAMTUNE_API_ORIGIN": "https://api.dreamtunelabs.com",
+          "DREAMTUNE_REQUEST_TIMEOUT_MS": "120000"
+        }
+      }
+    prerequisites:
+      - Node.js 22.20 or later
+      - Dreamtune account and scoped production workspace key
+      - Workspace credit for paid operations
+    parameters:
+      - name: Dreamtune workspace API key
+        key: DREAMTUNE_API_KEY
+        description: Supplied to the local MCP process through its environment
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
