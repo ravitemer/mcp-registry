@@ -1,0 +1,43 @@
+id: agentservices
+name: AgentServices
+description: >-
+  Premium APIs for AI agents. Crypto data, market intelligence, on-chain analytics,
+  DeFi strategies, portfolio intelligence, and cross-DEX arbitrage scanning.
+  52 endpoints (40 paid via x402, 12 free). MCP server with 37 tools.
+  Agents discover and pay for data services via USDC micropayments on Base.
+author: vbkotecha
+url: https://github.com/vbkotecha/aiservices-api
+category: finance
+tags:
+  - crypto
+  - market-data
+  - defi
+  - onchain
+  - portfolio
+  - arbitrage
+  - x402
+  - price-feeds
+  - defi-yields
+  - technical-indicators
+installations:
+  - name: Remote
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://agentservices.to/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: NPX
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "agentservices-mcp"]
+      }
+    prerequisites:
+      - Node.js
+    transports:
+      - stdio
+featured: false
+verified: false
