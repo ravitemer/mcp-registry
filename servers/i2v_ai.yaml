@@ -1,0 +1,50 @@
+id: i2v_ai
+name: I2v.ai
+description: >-
+  Official i2v.ai MCP server for image generation and text-to-video or
+  image-to-video generation across 12 image models and 16 video models, with
+  parameter schemas, a USD quote before every paid task and a caller-set
+  spending ceiling.
+author: i2v-ai
+url: https://github.com/i2v-ai/i2v-mcp
+license: MIT
+category: media-generation
+tags:
+  - image-generation
+  - video-generation
+  - text-to-video
+  - image-to-video
+  - media
+  - remote-mcp
+installations:
+  - name: Remote
+    description: Connect to the hosted Streamable HTTP endpoint with OAuth 2.1.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://i2v.ai/api/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+  - name: NPX
+    description: Run the local stdio server with an i2v.ai API key.
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "@i2v-ai/cli", "mcp"],
+        "env": {
+          "I2V_API_KEY": "${I2V_API_KEY}"
+        }
+      }
+    prerequisites:
+      - Node.js >= 20
+    parameters:
+      - name: i2v.ai API Key
+        key: I2V_API_KEY
+        description: Your i2v.ai API key from https://i2v.ai/dashboard/api-keys
+        placeholder: i2v_xxxxxxxxxxxxxxxxxxxxxxxx
+    transports:
+      - stdio
+featured: false
+verified: true
