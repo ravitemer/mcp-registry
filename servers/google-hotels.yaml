@@ -1,0 +1,46 @@
+id: google_hotels
+name: Google Hotels
+description: >-
+  Live Google Hotels and Google Vacation Rentals prices with per-OTA rates
+  (Booking.com, Expedia, Agoda, Vrbo, Airbnb, Hotels.com), plus a 3-month
+  daily price calendar for any hotel URL. Backed by three open-source Apify
+  actors. No Google account required.
+author: huynhtanan
+url: https://github.com/huynhtanan/google-hotels-mcp
+license: MIT
+category: travel
+tags:
+  - travel
+  - hotels
+  - vacation-rentals
+  - pricing
+  - apify
+  - google
+installations:
+  - name: UVX
+    description: Run from GitHub tag with uvx (recommended, no local install)
+    config: |-
+      {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/huynhtanan/google-hotels-mcp.git@v0.1.2",
+          "google-hotels-mcp"
+        ],
+        "env": {
+          "APIFY_TOKEN": "${APIFY_TOKEN}"
+        }
+      }
+    prerequisites:
+      - Python 3.10+
+      - uv
+    parameters:
+      - name: Apify API Token
+        key: APIFY_TOKEN
+        description: Apify API token from https://console.apify.com/account/integrations
+        placeholder: apify_api_your_token_here
+        required: true
+    transports:
+      - stdio
+featured: false
+verified: false
