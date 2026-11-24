@@ -1,0 +1,30 @@
+id: chainlink_sentinel
+name: Chainlink Sentinel
+description: >-
+  AI-powered cross-chain risk sentinel using Chainlink Data Feeds. 6 MCP tools
+  for real-time oracle monitoring, anomaly detection, stablecoin depeg alerts,
+  and AI risk reports across 6 EVM chains. Zero API keys required.
+author: ElromEvedElElyon
+url: https://github.com/ElromEvedElElyon/chainlink-sentinel
+category: blockchain
+tags:
+  - chainlink
+  - oracle
+  - defi
+  - risk-monitoring
+  - cross-chain
+  - security
+installations:
+  - name: NPX from GitHub
+    config: |-
+      {
+        "command": "npx",
+        "args": ["-y", "github:ElromEvedElElyon/chainlink-sentinel"]
+      }
+    prerequisites:
+      - Node.js
+    parameters: []
+    transports:
+      - stdio
+featured: false
+verified: false
