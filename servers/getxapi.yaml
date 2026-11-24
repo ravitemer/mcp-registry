@@ -1,0 +1,39 @@
+id: getxapi
+name: GetXAPI
+description: >-
+  Remote MCP server for GetXAPI's X data platform, with structured access to
+  tweet search via the advanced_search endpoint.
+author: GetXAPI
+url: https://github.com/getxapi/getxapi-mcp
+license: MIT
+category: social-media
+tags:
+  - x
+  - twitter
+  - social-media
+  - data-extraction
+  - search
+  - automation
+installations:
+  - name: Remote
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://api.getxapi.com/mcp",
+        "headers": {
+          "Authorization": "Bearer ${GETXAPI_API_KEY}"
+        }
+      }
+    prerequisites:
+      - GetXAPI account
+      - GetXAPI API key
+    parameters:
+      - name: GetXAPI API Key
+        key: GETXAPI_API_KEY
+        description: API key from the GetXAPI dashboard account page
+        placeholder: your_api_key
+        required: true
+    transports:
+      - streamable-http
+featured: false
+verified: false
