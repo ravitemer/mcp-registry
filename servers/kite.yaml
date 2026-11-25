@@ -1,0 +1,29 @@
+id: kite
+name: Kite
+description: >-
+  Design tool your AI agents and your team share. Agents draw real, editable
+  layers (frames, text, components, auto layout) in the same Kite file the team
+  edits live, and any frame can be copied as HTML, React or Tailwind.
+author: kitedotnew
+url: https://github.com/kitedotnew/kite-agent-plugins
+category: design
+tags:
+  - design
+  - ui-design
+  - prototyping
+  - collaboration
+  - remote
+installations:
+  - name: Remote
+    description: Kite's hosted MCP server; sign in with OAuth on first use, no key needed
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://kite.new/api/mcp"
+      }
+    prerequisites:
+      - Free Kite account (kite.new)
+    transports:
+      - streamable-http
+featured: false
+verified: false
