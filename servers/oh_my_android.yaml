@@ -1,0 +1,33 @@
+id: oh_my_android
+name: Oh My Android
+description: >-
+  Native macOS app for the Android Emulator with a built-in MCP server (18
+  tools). Your AI agent can screenshot the emulator in dp, read the UI tree,
+  tap and type, switch dark mode or RTL, read logcat and query the app's
+  database.
+author: ateymoori
+url: https://github.com/ateymoori/oh-my-android
+license: MIT
+category: development
+tags:
+  - android
+  - android-emulator
+  - adb
+  - macos
+  - testing
+  - accessibility
+installations:
+  - name: Homebrew
+    description: Install the app with Homebrew; ohmyandroid-mcp is put on your PATH
+    config: |-
+      {
+        "command": "ohmyandroid-mcp"
+      }
+    prerequisites:
+      - macOS 26 (Tahoe) or later, Apple silicon
+      - "Oh My Android: brew install --cask ateymoori/tap/oh-my-android"
+      - Android SDK (the app finds it by itself)
+    transports:
+      - stdio
+featured: false
+verified: false
