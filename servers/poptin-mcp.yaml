@@ -1,0 +1,27 @@
+id: poptin_mcp
+name: Poptin MCP
+description: >-
+  Connects compatible AI assistants to Poptin to draft email campaigns, build
+  audience segments, and analyze popup and form performance.
+author: Poptin
+url: https://github.com/Poptin-LTD/Poptin-MCP
+category: marketing
+tags:
+  - email-marketing
+  - audience-segmentation
+  - popups
+  - forms
+installations:
+  - name: Remote
+    description: Connect over Streamable HTTP and sign in to Poptin with OAuth.
+    config: |-
+      {
+        "url": "https://mcp.popt.in/mcp"
+      }
+    prerequisites:
+      - Poptin account
+      - MCP client supporting Streamable HTTP with OAuth
+    transports:
+      - streamable-http
+featured: false
+verified: false
