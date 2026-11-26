@@ -1,0 +1,28 @@
+id: liliphant
+name: Liliphant
+description: >-
+  Liliphant joins your meetings and remembers the work across all of them. This
+  hosted MCP server lets AI assistants ask what was decided, who promised what
+  and what is still blocked, with the exact quote, speaker and meeting; sign in
+  with OAuth when prompted.
+author: Walkover
+url: https://github.com/walkover-mcp/liliphant
+category: productivity
+tags:
+  - meetings
+  - notes
+  - knowledge
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint; sign in with OAuth when prompted
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp.liliphant.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
