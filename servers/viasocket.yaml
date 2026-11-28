@@ -1,0 +1,26 @@
+id: viasocket
+name: ViaSocket
+description: >-
+  Infrastructure for building apps and AI agents, with integrations, automation
+  and AI capabilities. Hosted MCP server; sign in with OAuth when prompted.
+author: Walkover
+url: https://github.com/walkover-mcp/viasocket
+category: development
+tags:
+  - integrations
+  - automation
+  - oauth
+  - remote
+installations:
+  - name: Remote
+    description: Hosted Streamable HTTP endpoint; sign in with OAuth when prompted
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://connect.viasocket.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
