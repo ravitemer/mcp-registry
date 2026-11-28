@@ -1,0 +1,38 @@
+id: nova_research
+name: Nova Research (CIVAI)
+description: >-
+  Deep research and report generation over live web search, from the Nova agent
+  catalog by CIVAI Technologies. Hosted Streamable HTTP; tool discovery is open
+  but calling a tool needs a Nova account via OAuth or an API key.
+author: civai-technologies
+url: https://github.com/civai-technologies/research-agent-mcp-by-nova-civai
+license: MIT
+category: research
+tags:
+  - research
+  - deep-research
+  - reports
+  - web-search
+  - remote-mcp
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Connect with a Nova API key from https://nova.civai.co/api-keys
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://nova.civai.co/mcp/agents/research-agent",
+        "headers": {
+          "Authorization": "Bearer ${NOVA_API_KEY}"
+        }
+      }
+    parameters:
+      - name: Nova API Key
+        key: NOVA_API_KEY
+        placeholder: your_nova_api_key
+    prerequisites:
+      - Nova account at https://nova.civai.co
+      - API key created at https://nova.civai.co/api-keys
+    transports:
+      - streamable-http
+featured: false
+verified: false
