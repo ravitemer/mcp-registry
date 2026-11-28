@@ -1,0 +1,32 @@
+id: corpusiq
+name: CorpusIQ
+description: >-
+  Query 40+ connected business systems such as QuickBooks, Shopify, Stripe,
+  HubSpot and Google Search Console through one hosted OAuth connection. Access
+  is read-only and every answer cites the source record.
+author: CorpusIQ
+url: https://github.com/CorpusIQ/mcp-manifest
+license: Proprietary
+category: business-data
+tags:
+  - business-data
+  - analytics
+  - accounting
+  - ecommerce
+  - payments
+  - cross-source
+installations:
+  - name: Remote (Streamable HTTP)
+    description: >-
+      Hosted MCP endpoint with OAuth 2.1 and dynamic client registration.
+      Read-only access, no data stored, no local install.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://mcp2.corpusiq.io/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
