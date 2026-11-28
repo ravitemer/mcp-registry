@@ -1,7 +1,8 @@
 id: viasocket
 name: ViaSocket
 description: >-
-  Infrastructure for building apps and AI agents, with integrations, automation and AI   and AI capabilities. Hosted MCP server; sign in with OAuth when prompted.
+  Infrastructure for building apps and AI agents, with integrations, automation
+  and AI capabilities. Hosted MCP server; sign in with OAuth when prompted.
 author: Walkover
 url: https://github.com/walkover-mcp/viasocket
 category: development
