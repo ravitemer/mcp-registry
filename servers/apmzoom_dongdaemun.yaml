@@ -1,0 +1,31 @@
+id: apmzoom_dongdaemun
+name: apMZoomAI Dongdaemun Wholesale
+description: >-
+  Search Dongdaemun (Seoul) wholesale fashion items, new arrivals and stalls by
+  building and floor. Public and read-only: no account or API key, no prices or
+  contact details. Every result links back to apMZoomAI.
+author: apM Hwashin Co., Ltd.
+url: https://github.com/apmleokeo-gif/apmzoom-mcp
+license: MIT
+category: ecommerce
+tags:
+  - dongdaemun
+  - wholesale
+  - fashion
+  - sourcing
+  - korea
+  - seoul
+  - b2b
+installations:
+  - name: Remote (Streamable HTTP)
+    description: Public endpoint. No API key, OAuth or sign-up needed.
+    config: |-
+      {
+        "type": "streamable-http",
+        "url": "https://www.apmzoom.com/mcp"
+      }
+    prerequisites: []
+    transports:
+      - streamable-http
+featured: false
+verified: false
